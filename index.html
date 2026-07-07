@@ -1,0 +1,1327 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bufete Torres Herrera | Abogados Especialistas en Honduras</title>
+  <meta name="description" content="Bufete Torres Herrera — Asesoría jurídica especializada en litigios civiles y laborales, derecho marítimo y gestión portuaria, trámites aduaneros y administrativos en Honduras." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ── Reset & Variables ────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy-950: #060f1a;
+      --navy-900: #0a1929;
+      --navy-800: #0d2b4e;
+      --navy-700: #1a3a5c;
+      --blue-700:  #1250a0;
+      --blue-600:  #1565c0;
+      --blue-500:  #1976d2;
+      --blue-400:  #42a5f5;
+      --blue-300:  #90caf9;
+      --blue-100:  #e3f2fd;
+      --blue-50:   #f0f7ff;
+      --gray-900:  #0f172a;
+      --gray-700:  #334155;
+      --gray-600:  #475569;
+      --gray-500:  #64748b;
+      --gray-300:  #cbd5e1;
+      --gray-200:  #e2e8f0;
+      --gray-100:  #f1f5f9;
+      --gray-50:   #f8fafc;
+      --white:     #ffffff;
+
+      --font-heading: 'Playfair Display', Georgia, serif;
+      --font-body:    'Inter', system-ui, -apple-system, sans-serif;
+
+      --shadow-sm:  0 1px 4px rgba(0,0,0,.08);
+      --shadow-md:  0 4px 16px rgba(0,0,0,.10);
+      --shadow-lg:  0 8px 32px rgba(0,0,0,.14);
+      --shadow-xl:  0 16px 48px rgba(0,0,0,.18);
+
+      --radius-sm: 6px;
+      --radius-md: 12px;
+      --radius-lg: 20px;
+      --transition: all .3s ease;
+    }
+
+    html { scroll-behavior: smooth; font-size: 16px; scroll-padding-top: 74px; }
+
+    body {
+      font-family: var(--font-body);
+      color: var(--gray-700);
+      line-height: 1.7;
+      background: var(--white);
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4 { font-family: var(--font-heading); line-height: 1.2; color: var(--navy-800); }
+    a { text-decoration: none; }
+    img { display: block; max-width: 100%; }
+
+    /* ── Layout helpers ───────────────────────────────── */
+    .container { max-width: 1260px; margin: 0 auto; padding: 0 2rem; }
+    section { padding: 5.5rem 0; }
+
+    .section-tag {
+      display: inline-block;
+      font-size: .75rem;
+      font-weight: 600;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--blue-600);
+      margin-bottom: .6rem;
+    }
+    .section-title { font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 700; margin-bottom: .9rem; }
+    .section-lead   { font-size: 1.05rem; color: var(--gray-500); line-height: 1.85; max-width: 640px; }
+    .section-divider { width: 44px; height: 3px; background: var(--blue-600); border-radius: 2px; margin: .9rem 0 1.6rem; }
+
+    .sh        { margin-bottom: 3.5rem; }
+    .sh.center { text-align: center; }
+    .sh.center .section-lead    { margin: 0 auto; }
+    .sh.center .section-divider { margin: .9rem auto 1.6rem; }
+
+    /* ── Navigation ───────────────────────────────────── */
+    #navbar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      background: rgba(6,15,26,.96);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(255,255,255,.07);
+      transition: box-shadow .3s;
+    }
+    #navbar.scrolled { box-shadow: 0 4px 24px rgba(0,0,0,.35); }
+
+    .nav-wrap {
+      max-width: 1260px; margin: 0 auto; padding: 0 2rem;
+      height: 74px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+
+    .nav-logo { display: flex; flex-direction: column; }
+    .nav-logo-name {
+      font-family: var(--font-heading);
+      font-size: 1.15rem; font-weight: 700;
+      color: var(--white); letter-spacing: .02em; line-height: 1.1;
+    }
+    .nav-logo-tag {
+      font-size: .62rem; font-weight: 500; letter-spacing: .16em;
+      text-transform: uppercase; color: var(--blue-400);
+    }
+
+    .nav-links { display: flex; align-items: center; gap: .2rem; list-style: none; }
+    .nav-links a {
+      color: rgba(255,255,255,.78);
+      font-size: .875rem; font-weight: 500;
+      padding: .5rem .9rem; border-radius: var(--radius-sm);
+      transition: var(--transition);
+    }
+    .nav-links a:hover { color: var(--white); background: rgba(255,255,255,.07); }
+
+    .nav-cta {
+      background: var(--blue-600) !important;
+      color: var(--white) !important;
+      padding: .58rem 1.25rem !important;
+      font-weight: 600 !important;
+      border-radius: var(--radius-sm) !important;
+    }
+    .nav-cta:hover {
+      background: var(--blue-500) !important;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 14px rgba(21,101,192,.45) !important;
+    }
+
+    .nav-burger { display: none; background: none; border: none; cursor: pointer; padding: .4rem; }
+    .burger-bar {
+      display: block; width: 24px; height: 2px;
+      background: var(--white); border-radius: 2px;
+      transition: var(--transition);
+    }
+    .burger-bar + .burger-bar { margin-top: 6px; }
+
+    .nav-burger.open .burger-bar:nth-child(1) { transform: rotate(45deg) translate(5px,6px); }
+    .nav-burger.open .burger-bar:nth-child(2) { opacity: 0; }
+    .nav-burger.open .burger-bar:nth-child(3) { transform: rotate(-45deg) translate(5px,-6px); }
+
+    /* mobile drawer */
+    #mob-menu {
+      display: none; flex-direction: column; gap: .2rem;
+      position: fixed; top: 74px; left: 0; right: 0; z-index: 999;
+      background: rgba(6,15,26,.97); backdrop-filter: blur(14px);
+      padding: 1.25rem 2rem 1.75rem;
+      border-bottom: 1px solid rgba(255,255,255,.07);
+    }
+    #mob-menu.open { display: flex; }
+    #mob-menu a {
+      color: rgba(255,255,255,.8); font-size: .95rem;
+      padding: .7rem 1rem; border-radius: var(--radius-sm);
+      transition: var(--transition);
+    }
+    #mob-menu a:hover { background: rgba(255,255,255,.06); color: var(--white); }
+
+    /* ── Hero ─────────────────────────────────────────── */
+    #inicio {
+      min-height: 100vh;
+      background:
+        linear-gradient(145deg, rgba(6,15,26,.97) 0%, rgba(13,43,78,.93) 55%, rgba(18,80,160,.22) 100%),
+        radial-gradient(ellipse 80% 60% at 72% 48%, rgba(66,165,245,.12) 0%, transparent 70%);
+      background-color: var(--navy-900);
+      display: flex; align-items: center;
+      position: relative; overflow: hidden;
+    }
+
+    /* subtle grid texture */
+    #inicio::after {
+      content: '';
+      position: absolute; inset: 0; pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+
+    .hero-inner {
+      position: relative; z-index: 1;
+      max-width: 1260px; margin: 0 auto;
+      padding: 7rem 2rem 4rem;
+      width: 100%;
+    }
+
+    .hero-pill {
+      display: inline-flex; align-items: center; gap: .5rem;
+      background: rgba(66,165,245,.1);
+      border: 1px solid rgba(66,165,245,.22);
+      color: var(--blue-300);
+      padding: .38rem 1rem; border-radius: 100px;
+      font-size: .75rem; font-weight: 600;
+      letter-spacing: .1em; text-transform: uppercase;
+      margin-bottom: 1.75rem;
+    }
+    .hero-pill::before {
+      content: ''; width: 6px; height: 6px;
+      border-radius: 50%; background: var(--blue-400);
+      flex-shrink: 0;
+    }
+
+    .hero-title {
+      font-size: clamp(2.6rem, 5.2vw, 4.2rem);
+      font-weight: 800; color: var(--white);
+      line-height: 1.1; max-width: 820px;
+      margin-bottom: 1.4rem;
+    }
+    .hero-title em { font-style: normal; color: var(--blue-400); }
+
+    .hero-lead {
+      font-size: 1.15rem; font-weight: 300;
+      color: rgba(255,255,255,.65);
+      max-width: 600px; line-height: 1.85;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+    .btn-solid {
+      display: inline-flex; align-items: center; gap: .5rem;
+      background: var(--blue-600); color: var(--white);
+      padding: .9rem 2rem; border-radius: var(--radius-sm);
+      font-size: .95rem; font-weight: 600;
+      transition: var(--transition);
+    }
+    .btn-solid:hover {
+      background: var(--blue-500);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(21,101,192,.42);
+    }
+
+    .btn-ghost {
+      display: inline-flex; align-items: center; gap: .5rem;
+      background: transparent; color: var(--white);
+      padding: .9rem 2rem; border-radius: var(--radius-sm);
+      font-size: .95rem; font-weight: 500;
+      border: 1.5px solid rgba(255,255,255,.28);
+      transition: var(--transition);
+    }
+    .btn-ghost:hover {
+      border-color: rgba(255,255,255,.55);
+      background: rgba(255,255,255,.06);
+    }
+
+    .hero-creds {
+      display: flex; flex-wrap: wrap; gap: 1.4rem;
+      margin-top: 4.5rem; padding-top: 2.8rem;
+      border-top: 1px solid rgba(255,255,255,.09);
+    }
+    .hcred {
+      display: flex; align-items: center; gap: .65rem;
+      color: rgba(255,255,255,.55);
+      font-size: .8rem; font-weight: 500; letter-spacing: .03em;
+    }
+    .hcred-icon {
+      width: 34px; height: 34px; border-radius: 7px;
+      background: rgba(66,165,245,.1);
+      border: 1px solid rgba(66,165,245,.18);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem; flex-shrink: 0;
+    }
+
+    /* ── Nosotros ─────────────────────────────────────── */
+    #nosotros { background: var(--white); }
+
+    .about-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 5rem; align-items: center;
+    }
+
+    /* Visual placeholder panel */
+    .about-panel {
+      position: relative;
+      padding-bottom: 2rem;
+      padding-right: 2rem;
+    }
+    .about-frame {
+      border-radius: var(--radius-lg);
+      height: 560px;
+      overflow: hidden;
+      position: relative;
+      box-shadow: var(--shadow-xl);
+    }
+    .about-frame img {
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center top;
+      display: block;
+    }
+
+    .about-float {
+      position: absolute; bottom: -1.6rem; right: -1.6rem;
+      background: var(--white); border-radius: var(--radius-md);
+      padding: 1.2rem 1.4rem; box-shadow: var(--shadow-xl);
+      display: flex; align-items: center; gap: .75rem;
+    }
+    .af-icon {
+      width: 46px; height: 46px; border-radius: 10px;
+      background: var(--blue-100); display: flex;
+      align-items: center; justify-content: center;
+      font-size: 1.5rem; flex-shrink: 0;
+    }
+    .af-text strong { display: block; font-size: .88rem; color: var(--navy-800); font-weight: 700; }
+    .af-text span   { font-size: .75rem; color: var(--gray-500); }
+
+    /* credential list */
+    .cred-list { list-style: none; display: flex; flex-direction: column; gap: .9rem; }
+    .cred-list li {
+      display: flex; align-items: flex-start; gap: .85rem;
+      font-size: .95rem; color: var(--gray-700);
+    }
+    .cred-dot {
+      width: 22px; height: 22px; border-radius: 50%;
+      background: var(--blue-100);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; margin-top: .18rem;
+    }
+    .cred-dot::after {
+      content: ''; width: 8px; height: 8px;
+      border-radius: 50%; background: var(--blue-600);
+    }
+    .about-lead { margin-bottom: 1.5rem; }
+    .about-note { font-size: .9rem; color: var(--gray-500); line-height: 1.8; margin-bottom: 2rem; }
+
+    /* ── Áreas de Práctica ────────────────────────────── */
+    #areas { background: var(--gray-50); }
+
+    .areas-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.4rem;
+    }
+
+    .area-card {
+      background: var(--white); border-radius: var(--radius-md);
+      padding: 2rem 1.75rem;
+      border: 1px solid var(--gray-200);
+      position: relative; overflow: hidden;
+      transition: var(--transition);
+    }
+    .area-card::after {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--blue-700), var(--blue-400));
+      transform: scaleX(0); transform-origin: left;
+      transition: transform .35s ease;
+    }
+    .area-card:hover { border-color: var(--blue-300); box-shadow: var(--shadow-lg); transform: translateY(-5px); }
+    .area-card:hover::after { transform: scaleX(1); }
+
+    .area-icon {
+      width: 52px; height: 52px; border-radius: var(--radius-sm);
+      background: var(--blue-50);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.55rem; margin-bottom: 1.2rem;
+      transition: var(--transition);
+    }
+    .area-card:hover .area-icon { background: var(--blue-100); }
+
+    .area-card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: .65rem; color: var(--navy-800); }
+    .area-card > p { font-size: .88rem; color: var(--gray-500); line-height: 1.75; margin-bottom: 1.2rem; }
+
+    .svc-list { list-style: none; display: flex; flex-direction: column; gap: .38rem; }
+    .svc-list li {
+      font-size: .81rem; color: var(--gray-700);
+      display: flex; align-items: flex-start; gap: .5rem;
+    }
+    .svc-list li::before { content: '›'; color: var(--blue-600); font-weight: 700; flex-shrink: 0; line-height: 1.7; }
+
+    /* ── Por qué elegirnos ────────────────────────────── */
+    #valor { background: var(--white); }
+
+    .valor-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+    }
+    .valor-item { text-align: center; padding: 1.75rem 1.25rem; }
+    .valor-icon {
+      width: 68px; height: 68px; margin: 0 auto 1.2rem;
+      border-radius: var(--radius-md);
+      background: linear-gradient(135deg, var(--blue-50), var(--blue-100));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.85rem;
+    }
+    .valor-item h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: .55rem; }
+    .valor-item p  { font-size: .88rem; color: var(--gray-500); line-height: 1.75; }
+
+    /* ── Sectores ─────────────────────────────────────── */
+    #clientes {
+      background: linear-gradient(160deg, var(--navy-900) 0%, var(--navy-800) 60%, #0a2744 100%);
+      color: var(--white);
+    }
+    #clientes .section-tag  { color: var(--blue-400); }
+    #clientes .section-title{ color: var(--white); }
+    #clientes .section-lead { color: rgba(255,255,255,.6); }
+    #clientes .section-divider { background: var(--blue-400); }
+
+    .sectors-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 1.2rem;
+    }
+    .sec-card {
+      background: rgba(255,255,255,.055);
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: var(--radius-md);
+      padding: 1.5rem 1.25rem;
+      transition: var(--transition);
+    }
+    .sec-card:hover {
+      background: rgba(66,165,245,.1);
+      border-color: rgba(66,165,245,.3);
+      transform: translateY(-3px);
+    }
+    .sec-card em { font-size: 1.75rem; font-style: normal; display: block; margin-bottom: .7rem; }
+    .sec-card h4 {
+      font-family: var(--font-body); font-size: .92rem;
+      font-weight: 600; color: var(--white); margin-bottom: .35rem;
+    }
+    .sec-card p  { font-size: .79rem; color: rgba(255,255,255,.48); line-height: 1.65; }
+
+    /* ── Proceso ──────────────────────────────────────── */
+    #proceso { background: var(--gray-50); }
+
+    .steps-row {
+      display: grid; grid-template-columns: repeat(5, 1fr);
+      position: relative; gap: 0;
+    }
+    .steps-row::before {
+      content: '';
+      position: absolute; top: 25px; left: 9%; right: 9%; height: 2px;
+      background: linear-gradient(90deg, var(--blue-600), var(--blue-400));
+      z-index: 0;
+    }
+    .step {
+      text-align: center; padding: 0 .75rem;
+      position: relative; z-index: 1;
+    }
+    .step-num {
+      width: 50px; height: 50px; border-radius: 50%;
+      background: var(--blue-600); color: var(--white);
+      font-weight: 700; font-size: .95rem;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 1.2rem;
+      box-shadow: 0 0 0 6px var(--gray-50), 0 0 0 8px rgba(21,101,192,.2);
+    }
+    .step h4 { font-size: .92rem; font-weight: 700; color: var(--navy-800); margin-bottom: .45rem; }
+    .step p  { font-size: .8rem; color: var(--gray-500); line-height: 1.65; }
+
+    /* ── Contacto ─────────────────────────────────────── */
+    #contacto {
+      background: linear-gradient(160deg, var(--navy-900) 0%, var(--navy-800) 60%, #0a2744 100%);
+      padding: 6rem 0;
+    }
+    #contacto .section-tag   { color: var(--blue-400); }
+    #contacto .section-title { color: var(--white); font-size: clamp(1.8rem, 3vw, 2.6rem); }
+    #contacto .section-lead  { color: rgba(255,255,255,.58); }
+    #contacto .section-divider { background: var(--blue-400); }
+
+    .contact-grid {
+      display: grid; grid-template-columns: 1fr 420px;
+      gap: 3.5rem; align-items: start;
+    }
+
+    /* Form card */
+    .contact-form-card {
+      background: var(--white); border-radius: var(--radius-lg);
+      padding: 2.5rem; box-shadow: var(--shadow-xl);
+    }
+    .contact-form-card h3 {
+      font-size: 1.3rem; font-weight: 700; color: var(--navy-800);
+      margin-bottom: .4rem;
+    }
+    .contact-form-card > p {
+      font-size: .88rem; color: var(--gray-500); margin-bottom: 1.8rem; line-height: 1.6;
+    }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .form-group { display: flex; flex-direction: column; gap: .4rem; margin-bottom: 1rem; }
+    .form-group label {
+      font-size: .78rem; font-weight: 600; color: var(--gray-700);
+      letter-spacing: .03em; text-transform: uppercase;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      padding: .7rem .95rem; border-radius: var(--radius-sm);
+      border: 1.5px solid var(--gray-200);
+      font-family: var(--font-body); font-size: .9rem; color: var(--gray-900);
+      background: var(--gray-50); transition: var(--transition);
+      outline: none; width: 100%;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--blue-500);
+      background: var(--white);
+      box-shadow: 0 0 0 3px rgba(21,101,192,.1);
+    }
+    .form-group textarea { resize: vertical; min-height: 110px; }
+    .form-group select   { appearance: none; cursor: pointer;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+      background-repeat: no-repeat; background-position: right .85rem center;
+      padding-right: 2.2rem;
+    }
+
+    .form-check {
+      display: flex; align-items: flex-start; gap: .6rem;
+      margin-bottom: 1.5rem;
+    }
+    .form-check input[type=checkbox] { margin-top: .2rem; flex-shrink: 0; accent-color: var(--blue-600); width: 15px; height: 15px; }
+    .form-check label { font-size: .8rem; color: var(--gray-500); line-height: 1.55; }
+
+    .btn-submit {
+      width: 100%; padding: .95rem; background: var(--blue-600);
+      color: var(--white); font-family: var(--font-body);
+      font-size: .95rem; font-weight: 600; border: none;
+      border-radius: var(--radius-sm); cursor: pointer;
+      transition: var(--transition); display: flex;
+      align-items: center; justify-content: center; gap: .5rem;
+    }
+    .btn-submit:hover { background: var(--blue-500); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(21,101,192,.35); }
+    .btn-submit:active { transform: translateY(0); }
+
+    /* Form success state */
+    .form-success {
+      display: none; text-align: center; padding: 2rem;
+    }
+    .form-success .success-icon { font-size: 3rem; margin-bottom: 1rem; }
+    .form-success h4 { font-size: 1.2rem; color: var(--navy-800); margin-bottom: .5rem; }
+    .form-success p  { font-size: .9rem; color: var(--gray-500); }
+
+    /* Right panel: direct channels */
+    .contact-info { display: flex; flex-direction: column; gap: 1.25rem; }
+
+    .contact-info-header { margin-bottom: .5rem; }
+    .contact-info-header h3 {
+      font-size: 1.15rem; color: var(--white); font-weight: 700; margin-bottom: .3rem;
+    }
+    .contact-info-header p  { font-size: .85rem; color: rgba(255,255,255,.5); line-height: 1.6; }
+
+    .ch-btn {
+      display: flex; align-items: center; gap: .85rem;
+      background: rgba(255,255,255,.07);
+      border: 1px solid rgba(255,255,255,.11);
+      border-radius: var(--radius-md);
+      padding: 1.1rem 1.3rem; color: var(--white);
+      transition: var(--transition);
+    }
+    .ch-btn:hover {
+      background: rgba(66,165,245,.13);
+      border-color: rgba(66,165,245,.32);
+      transform: translateX(4px);
+    }
+    .ch-ico { font-size: 1.4rem; flex-shrink: 0; }
+    .ch-lbl { font-size: .68rem; text-transform: uppercase; letter-spacing: .1em; color: rgba(255,255,255,.42); }
+    .ch-val { font-size: .92rem; font-weight: 600; }
+
+    .ch-address {
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.09);
+      border-radius: var(--radius-md);
+      padding: 1.1rem 1.3rem;
+      display: flex; align-items: flex-start; gap: .85rem;
+    }
+    .ch-address-text { font-size: .85rem; color: rgba(255,255,255,.55); line-height: 1.65; }
+    .ch-address-text strong { display: block; color: rgba(255,255,255,.8); font-size: .78rem;
+      text-transform: uppercase; letter-spacing: .08em; margin-bottom: .3rem; }
+
+    .ch-note { font-size: .75rem; color: rgba(255,255,255,.25); margin-top: .5rem; text-align: center; }
+
+    @media (max-width: 900px) {
+      .contact-grid { grid-template-columns: 1fr; }
+      .contact-info { order: -1; }
+      .contact-info .ch-btn:hover { transform: translateY(-2px); }
+    }
+    @media (max-width: 540px) {
+      .form-row { grid-template-columns: 1fr; }
+      .contact-form-card { padding: 1.75rem; }
+    }
+
+    /* ── Footer ───────────────────────────────────────── */
+    footer {
+      background: var(--navy-950);
+      border-top: 1px solid rgba(255,255,255,.06);
+      padding: 2.8rem 0;
+    }
+    .foot-inner {
+      max-width: 1260px; margin: 0 auto; padding: 0 2rem;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 1.5rem;
+    }
+    .foot-brand { font-family: var(--font-heading); font-size: 1.1rem; color: rgba(255,255,255,.8); font-weight: 600; }
+    .foot-brand span { color: var(--blue-400); }
+    .foot-sub { font-size: .75rem; color: rgba(255,255,255,.3); margin-top: .25rem; }
+
+    .foot-nav { display: flex; gap: 1.5rem; list-style: none; flex-wrap: wrap; }
+    .foot-nav a { color: rgba(255,255,255,.4); font-size: .82rem; transition: color .2s; }
+    .foot-nav a:hover { color: rgba(255,255,255,.8); }
+
+    .foot-copy { font-size: .75rem; color: rgba(255,255,255,.25); }
+
+    /* ── Respaldo Notarial ────────────────────────────── */
+    .notarial-band {
+      background: linear-gradient(135deg, var(--navy-900) 0%, var(--navy-800) 100%);
+      padding: 3rem 0;
+      border-top: 1px solid rgba(255,255,255,.06);
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+    .notarial-inner {
+      display: flex; align-items: center; gap: 2.5rem;
+    }
+    .notarial-photo-wrap {
+      flex-shrink: 0; width: 138px; height: 138px;
+      border-radius: 50%; overflow: hidden;
+      border: 2px solid rgba(66,165,245,.35);
+      box-shadow: 0 0 0 5px rgba(66,165,245,.1);
+    }
+    .notarial-photo {
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center top;
+      display: block;
+    }
+    .notarial-sep {
+      width: 1px; height: 68px; flex-shrink: 0;
+      background: rgba(255,255,255,.13);
+    }
+    .notarial-badge {
+      display: inline-block;
+      font-size: .63rem; font-weight: 700; letter-spacing: .15em;
+      text-transform: uppercase; color: var(--blue-400);
+      margin-bottom: .35rem;
+    }
+    .notarial-name {
+      font-size: 1.08rem; font-weight: 700; color: var(--white);
+      margin-bottom: .12rem;
+    }
+    .notarial-role {
+      font-size: .76rem; color: rgba(255,255,255,.42);
+      font-weight: 500; letter-spacing: .05em; margin-bottom: .5rem;
+    }
+    .notarial-desc {
+      font-size: .84rem; color: rgba(255,255,255,.52); line-height: 1.72;
+      max-width: 560px;
+    }
+    .notarial-stat {
+      margin-left: auto; flex-shrink: 0;
+      text-align: center;
+      padding-left: 2.5rem;
+      border-left: 1px solid rgba(255,255,255,.1);
+    }
+    .ns-num {
+      display: block; font-family: var(--font-heading);
+      font-size: 2.5rem; font-weight: 800; color: var(--blue-400); line-height: 1;
+    }
+    .ns-lbl {
+      font-size: .7rem; color: rgba(255,255,255,.38);
+      text-transform: uppercase; letter-spacing: .08em; line-height: 1.55;
+    }
+    @media (max-width: 768px) {
+      .notarial-inner { flex-wrap: wrap; gap: 1.5rem; }
+      .notarial-sep   { display: none; }
+      .notarial-stat  { margin-left: 0; padding-left: 0; border-left: none; }
+    }
+
+    /* ── Scroll-reveal animation ──────────────────────── */
+    .reveal { opacity: 0; transform: translateY(22px); transition: opacity .65s ease, transform .65s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── Responsive ───────────────────────────────────── */
+    @media (max-width: 1100px) {
+      .areas-grid    { grid-template-columns: repeat(2, 1fr); }
+      .sectors-grid  { grid-template-columns: repeat(2, 1fr); }
+      .valor-grid    { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 860px) {
+      .about-grid   { grid-template-columns: 1fr; gap: 2rem; }
+      .about-panel  { padding-right: 1.5rem; padding-bottom: 1.5rem; }
+      .about-frame  { height: 380px; }
+      .steps-row    { grid-template-columns: 1fr; gap: 2.2rem; }
+      .steps-row::before { display: none; }
+      .step-num     { box-shadow: 0 0 0 6px var(--gray-50); }
+    }
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .nav-burger { display: block; }
+      section { padding: 4rem 0; }
+    }
+    @media (max-width: 580px) {
+      .sectors-grid { grid-template-columns: 1fr; }
+      .valor-grid   { grid-template-columns: 1fr; }
+      .areas-grid   { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── Navigation ──────────────────────────────────────────────── -->
+<nav id="navbar">
+  <div class="nav-wrap">
+    <a href="#inicio" class="nav-logo">
+      <span class="nav-logo-name">Bufete Torres Herrera</span>
+      <span class="nav-logo-tag">Abogados &amp; Consultores Jurídicos</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#nosotros">Nosotros</a></li>
+      <li><a href="#areas">Áreas de Práctica</a></li>
+      <li><a href="#clientes">Sectores</a></li>
+      <li><a href="#proceso">Proceso</a></li>
+      <li><a href="#contacto" class="nav-cta">Consulta Inicial</a></li>
+    </ul>
+    <button class="nav-burger" id="burger" aria-label="Menú">
+      <span class="burger-bar"></span>
+      <span class="burger-bar"></span>
+      <span class="burger-bar"></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile drawer -->
+<div id="mob-menu">
+  <a href="#nosotros">Nosotros</a>
+  <a href="#areas">Áreas de Práctica</a>
+  <a href="#clientes">Sectores</a>
+  <a href="#proceso">Proceso</a>
+  <a href="#contacto">Consulta Inicial</a>
+</div>
+
+<!-- ── Hero ─────────────────────────────────────────────────────── -->
+<section id="inicio">
+  <div class="hero-inner">
+    <div class="hero-pill">Bufete Torres Herrera · Honduras</div>
+
+    <h1 class="hero-title">
+      Abogado Litigante.<br><em>Resultados concretos</em> para su empresa.
+    </h1>
+
+    <p class="hero-lead">
+      Especialista en litigios civiles, laborales y mercantiles, trámites administrativos y aduaneros, y asesoría notarial. Representación estratégica ante tribunales e instituciones del Estado con un enfoque claro: proteger sus intereses y ganar.
+    </p>
+
+    <div class="hero-btns">
+      <a href="#contacto" class="btn-solid">
+        Solicitar Consulta
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <a href="#areas" class="btn-ghost">Ver Áreas de Práctica</a>
+    </div>
+
+    <div class="hero-creds">
+      <div class="hcred"><div class="hcred-icon">⚖️</div><span>Litigios Civiles, Laborales y Mercantiles</span></div>
+      <div class="hcred"><div class="hcred-icon">🏛️</div><span>Trámites Administrativos y Aduaneros</span></div>
+      <div class="hcred"><div class="hcred-icon">📜</div><span>Asociado a Notario Público</span></div>
+      <div class="hcred"><div class="hcred-icon">🚢</div><span>Derecho Marítimo y Gestión Portuaria</span></div>
+      <div class="hcred"><div class="hcred-icon">🎓</div><span>CAH N.º 19210 · UNAH</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Sobre el Bufete ───────────────────────────────────────────── -->
+<section id="nosotros">
+  <div class="container">
+    <div class="about-grid">
+
+      <!-- Visual panel -->
+      <div class="about-panel reveal">
+        <div class="about-frame">
+          <img src="abogado.jpg" alt="Abogado — Bufete Torres Herrera" />
+        </div>
+        <div class="about-float">
+          <div class="af-icon">⚖️</div>
+          <div class="af-text">
+            <strong>Litigante Activo</strong>
+            <span>Tribunales Civiles y Laborales · Honduras</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Text content -->
+      <div class="reveal">
+        <span class="section-tag">Sobre el Bufete</span>
+        <h2 class="section-title">Litigante experto al servicio de su empresa</h2>
+        <div class="section-divider"></div>
+        <p class="section-lead about-lead">
+          Bufete Torres Herrera es un despacho especializado en litigios civiles, laborales y mercantiles, con cobertura integral en trámites administrativos, aduaneros y asesoría notarial para empresas, corporaciones y ejecutivos en Tegucigalpa y toda Honduras.
+        </p>
+        <p class="about-note">
+          Con presencia activa en los Juzgados y Tribunales de la República, combinamos estrategia jurídica y conocimiento técnico profundo para defender sus intereses con eficacia. Entendemos que cada caso tiene consecuencias reales sobre su patrimonio y operaciones — y actuamos en consecuencia.
+        </p>
+        <ul class="cred-list">
+          <li>
+            <div class="cred-dot"></div>
+            <span><strong>Especialista en Litigios Civiles, Laborales y Mercantiles</strong> — Representación activa ante Juzgados y Tribunales de la República de Honduras</span>
+          </li>
+          <li>
+            <div class="cred-dot"></div>
+            <span><strong>Asociado a Notario Público</strong> — Servicio notarial pleno para personas naturales y jurídicas</span>
+          </li>
+          <li>
+            <div class="cred-dot"></div>
+            <span><strong>Especialista en trámites aduaneros y administrativos</strong> — Regímenes especiales, importación, exportación, ZOLI y ZIP</span>
+          </li>
+          <li>
+            <div class="cred-dot"></div>
+            <span><strong>Formación en Derecho Marítimo y Gestión Portuaria</strong> — Universidad Nacional Autónoma de Honduras (UNAH)</span>
+          </li>
+          <li>
+            <div class="cred-dot"></div>
+            <span><strong>Miembro activo</strong> del Colegio de Abogados de Honduras — Colegiación N.º&nbsp;19210</span>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── Respaldo Notarial ──────────────────────────────────────────── -->
+<div class="notarial-band">
+  <div class="container">
+    <div class="notarial-inner reveal">
+      <div class="notarial-photo-wrap">
+        <img src="notario.jpg" alt="Notario Público — Bufete Torres Herrera" class="notarial-photo" />
+      </div>
+      <div class="notarial-sep"></div>
+      <div>
+        <span class="notarial-badge">Respaldo Notarial</span>
+        <h3 class="notarial-name">Abogado Daniel Torres Herrera</h3>
+        <p class="notarial-role">Notario Público &amp; Abogado · Honduras</p>
+        <p class="notarial-desc">Más de 50 años de ejercicio ininterrumpido de la abogacía y la fe pública en Honduras. Su vasta trayectoria institucional y profundo conocimiento del derecho hondureño respaldan la solidez y plena validez jurídica de cada instrumento notarial que suscribimos.</p>
+      </div>
+      <div class="notarial-stat">
+        <span class="ns-num">50+</span>
+        <span class="ns-lbl">Años de ejercicio<br>en Honduras</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── Áreas de Práctica ─────────────────────────────────────────── -->
+<section id="areas">
+  <div class="container">
+    <div class="sh center reveal">
+      <span class="section-tag">Especialidades</span>
+      <h2 class="section-title">Áreas de Práctica</h2>
+      <div class="section-divider"></div>
+      <p class="section-lead">Atención integral en las áreas del derecho más críticas para empresas, corporaciones y grupos de inversión que operan en Honduras.</p>
+    </div>
+
+    <div class="areas-grid">
+
+      <!-- Civil -->
+      <div class="area-card reveal">
+        <div class="area-icon">⚖️</div>
+        <h3>Litigios Civiles</h3>
+        <p>Representación estratégica ante los juzgados y tribunales civiles de la República. Defendemos su patrimonio, sus contratos y sus derechos con rigor procesal y enfoque en resultados.</p>
+        <ul class="svc-list">
+          <li>Incumplimiento de contratos y obligaciones</li>
+          <li>Cobro judicial de deudas y ejecución de garantías</li>
+          <li>Disputas sobre bienes inmuebles y derechos reales</li>
+          <li>Reclamaciones por daños y perjuicios</li>
+          <li>Procesos ejecutivos y medidas cautelares</li>
+          <li>Recursos de apelación ante tribunales superiores</li>
+        </ul>
+      </div>
+
+      <!-- Laboral -->
+      <div class="area-card reveal">
+        <div class="area-icon">👥</div>
+        <h3>Litigios Laborales</h3>
+        <p>Defensa activa y asesoría preventiva en conflictos laborales. Protegemos a empleadores y empleados ante los Juzgados de Trabajo con estrategia sólida y conocimiento profundo de la ley.</p>
+        <ul class="svc-list">
+          <li>Defensa en demandas por despido injustificado</li>
+          <li>Liquidaciones y negociación de prestaciones laborales</li>
+          <li>Auditorías de cumplimiento laboral preventivas</li>
+          <li>Contratos de trabajo y reglamentos internos</li>
+          <li>Representación ante la Secretaría de Trabajo</li>
+          <li>Responsabilidad solidaria y subcontratación</li>
+        </ul>
+      </div>
+
+      <!-- Mercantil -->
+      <div class="area-card reveal">
+        <div class="area-icon">🏢</div>
+        <h3>Derecho Mercantil</h3>
+        <p>Asesoría y representación en asuntos comerciales y empresariales. Protegemos sus negocios, contratos e inversiones con dominio del derecho mercantil hondureño y su aplicación práctica.</p>
+        <ul class="svc-list">
+          <li>Constitución y estructuración de sociedades mercantiles</li>
+          <li>Contratos comerciales, distribución y agencia</li>
+          <li>Compraventa, fusión y adquisición de empresas</li>
+          <li>Títulos valores: cheques, pagarés y letras de cambio</li>
+          <li>Defensa en procesos mercantiles ante tribunales</li>
+          <li>Cumplimiento mercantil y gobierno corporativo</li>
+        </ul>
+      </div>
+
+      <!-- Notarial -->
+      <div class="area-card reveal">
+        <div class="area-icon">📜</div>
+        <h3>Asesoría Notarial</h3>
+        <p>Servicio notarial completo en asocio con Notario Público. Respaldo documental con plena validez legal para todas sus operaciones, contratos y actos jurídicos.</p>
+        <ul class="svc-list">
+          <li>Escrituración de bienes inmuebles y traspasos</li>
+          <li>Constitución y modificación de sociedades mercantiles</li>
+          <li>Protocolización de contratos y acuerdos privados</li>
+          <li>Poderes especiales, generales y amplísimos</li>
+          <li>Actas de juntas directivas y asambleas de socios</li>
+          <li>Testamentos y disposiciones de última voluntad</li>
+        </ul>
+      </div>
+
+      <!-- Administrativo -->
+      <div class="area-card reveal">
+        <div class="area-icon">🏛️</div>
+        <h3>Trámites Administrativos</h3>
+        <p>Gestión integral ante las instituciones del Estado hondureño. Obtenemos permisos, licencias y autorizaciones, e impugnamos resoluciones adversas con eficacia y celeridad.</p>
+        <ul class="svc-list">
+          <li>Permisos de operación y licencias empresariales</li>
+          <li>Recursos administrativos ante entidades del Estado</li>
+          <li>Contratación pública, licitaciones y concesiones</li>
+          <li>Procedimientos ante la Procuraduría General de la República</li>
+          <li>Impugnación de resoluciones administrativas</li>
+          <li>Autorizaciones y registros ante entes reguladores</li>
+        </ul>
+      </div>
+
+      <!-- Aduanas -->
+      <div class="area-card reveal">
+        <div class="area-icon">📦</div>
+        <h3>Trámites Aduaneros</h3>
+        <p>Representación y asesoría en procedimientos ante la Administración Aduanera de Honduras. Resolvemos controversias y agilizamos operaciones de comercio exterior con precisión.</p>
+        <ul class="svc-list">
+          <li>Regímenes aduaneros especiales (RIT, ZOLI, ZIP)</li>
+          <li>Recursos y apelaciones ante la autoridad aduanera</li>
+          <li>Controversias por clasificación arancelaria</li>
+          <li>Gestión de importaciones y exportaciones</li>
+          <li>Zonas Libres de Industria y Comercio (ZOLI)</li>
+          <li>Zonas Industriales de Procesamiento (ZIP)</li>
+        </ul>
+      </div>
+
+      <!-- Maritimo -->
+      <div class="area-card reveal">
+        <div class="area-icon">🚢</div>
+        <h3>Derecho Marítimo y Portuario</h3>
+        <p>Asesoría jurídica en materia marítima y portuaria para empresas con operaciones de comercio exterior, navieras y agencias logísticas que requieren representación ante las autoridades competentes.</p>
+        <ul class="svc-list">
+          <li>Contratos de transporte marítimo y fletamento</li>
+          <li>Disputas sobre carga, flete y averías marítimas</li>
+          <li>Responsabilidad del armador y operadores portuarios</li>
+          <li>Trámites ante la Empresa Nacional Portuaria (ENP)</li>
+          <li>Gestión ante la Dirección General de la Marina Mercante</li>
+          <li>Contratos de concesión y operación portuaria</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── Por qué elegirnos ─────────────────────────────────────────── -->
+<section id="valor">
+  <div class="container">
+    <div class="sh center reveal">
+      <span class="section-tag">Nuestra Propuesta de Valor</span>
+      <h2 class="section-title">¿Por qué Bufete Torres Herrera?</h2>
+      <div class="section-divider"></div>
+      <p class="section-lead">Cada decisión jurídica tiene consecuencias concretas sobre su patrimonio y reputación. Elija un despacho que comprende la diferencia entre actuar bien y actuar a tiempo.</p>
+    </div>
+    <div class="valor-grid">
+      <div class="valor-item reveal">
+        <div class="valor-icon">🎯</div>
+        <h3>Especialización Real</h3>
+        <p>Dominio técnico profundo en litigios civiles y laborales, trámites aduaneros y administrativos, y asesoría notarial. No generalizamos — nos enfocamos en lo que hacemos bien.</p>
+      </div>
+      <div class="valor-item reveal">
+        <div class="valor-icon">🔐</div>
+        <h3>Confidencialidad Absoluta</h3>
+        <p>La discreción es parte esencial de nuestro ejercicio profesional. Sus asuntos jurídicos y la información de su empresa están protegidos por el más estricto secreto profesional.</p>
+      </div>
+      <div class="valor-item reveal">
+        <div class="valor-icon">⚡</div>
+        <h3>Enfoque en Resultados</h3>
+        <p>Comprendemos que resolver un conflicto jurídico con rapidez y precisión reduce pérdidas y protege su reputación. Actuamos con urgencia estratégica desde el primer día.</p>
+      </div>
+      <div class="valor-item reveal">
+        <div class="valor-icon">🌐</div>
+        <h3>Cobertura Integral</h3>
+        <p>Desde litigios complejos hasta trámites administrativos cotidianos, ofrecemos acompañamiento jurídico continuo que cubre todas las necesidades legales de su empresa.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Sectores ──────────────────────────────────────────────────── -->
+<section id="clientes">
+  <div class="container">
+    <div class="sh center reveal">
+      <span class="section-tag">¿A Quién Servimos?</span>
+      <h2 class="section-title">Sectores que Atendemos</h2>
+      <div class="section-divider"></div>
+      <p class="section-lead">Atendemos empresas líderes, grupos corporativos y ejecutivos en los sectores más dinámicos de la economía hondureña.</p>
+    </div>
+    <div class="sectors-grid">
+      <div class="sec-card reveal">
+        <em>🏭</em>
+        <h4>Industria Maquiladora</h4>
+        <p>Cumplimiento laboral, regímenes aduaneros especiales y gestión jurídica integral para empresas en Zonas Francas y ZIP.</p>
+      </div>
+      <div class="sec-card reveal">
+        <em>🚢</em>
+        <h4>Logística y Transporte Marítimo</h4>
+        <p>Asesoría especializada para navieras, agencias portuarias y operadores en Puerto Cortés y demás puertos nacionales.</p>
+      </div>
+      <div class="sec-card reveal">
+        <em>🌿</em>
+        <h4>Agroindustria y Exportación</h4>
+        <p>Trámites de exportación, contratos comerciales y cumplimiento regulatorio para los sectores caficultor, palmicultor y agroexportador.</p>
+      </div>
+      <div class="sec-card reveal">
+        <em>🏗️</em>
+        <h4>Construcción e Inmobiliario</h4>
+        <p>Escrituración, permisos de construcción, litigios sobre bienes inmuebles y contratos de obra pública y privada.</p>
+      </div>
+      <div class="sec-card reveal">
+        <em>💼</em>
+        <h4>Grupos Corporativos y Holdings</h4>
+        <p>Constitución de sociedades, gobierno corporativo, juntas directivas y asesoría jurídica continua para conglomerados empresariales.</p>
+      </div>
+      <div class="sec-card reveal">
+        <em>🏦</em>
+        <h4>Sector Financiero e Inversión</h4>
+        <p>Contratos financieros, ejecución de garantías, cobro judicial de obligaciones y estructuración de inversiones.</p>
+      </div>
+      <div class="sec-card reveal">
+        <em>🛒</em>
+        <h4>Importadores y Distribuidores</h4>
+        <p>Gestión aduanera, clasificación arancelaria, recursos ante la autoridad y optimización de regímenes especiales de importación.</p>
+      </div>
+      <div class="sec-card reveal">
+        <em>⚡</em>
+        <h4>Energía y Concesiones</h4>
+        <p>Contratos de concesión, autorizaciones estatales, licitaciones públicas y cumplimiento regulatorio en el sector energético.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Proceso ───────────────────────────────────────────────────── -->
+<section id="proceso">
+  <div class="container">
+    <div class="sh center reveal">
+      <span class="section-tag">Metodología de Trabajo</span>
+      <h2 class="section-title">Nuestro Proceso</h2>
+      <div class="section-divider"></div>
+      <p class="section-lead">Un enfoque estructurado, transparente y orientado a resultados, desde el primer contacto hasta la resolución definitiva de su asunto.</p>
+    </div>
+    <div class="steps-row">
+      <div class="step reveal">
+        <div class="step-num">1</div>
+        <h4>Consulta Inicial</h4>
+        <p>Evaluamos su situación con total confidencialidad y le brindamos una opinión profesional honesta sobre su caso.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">2</div>
+        <h4>Diagnóstico Jurídico</h4>
+        <p>Analizamos en profundidad los hechos, documentos y riesgos para construir un cuadro jurídico completo y preciso.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">3</div>
+        <h4>Estrategia Legal</h4>
+        <p>Diseñamos la ruta jurídica más efectiva: escenarios claros, plazos definidos y objetivos concretos y medibles.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">4</div>
+        <h4>Ejecución</h4>
+        <p>Actuamos con rigor y precisión ante tribunales, instituciones públicas o contrapartes, según la estrategia trazada.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">5</div>
+        <h4>Seguimiento</h4>
+        <p>Le mantenemos informado en cada etapa y ajustamos la estrategia de manera ágil ante cualquier cambio en el proceso.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Contacto ──────────────────────────────────────────────────── -->
+<section id="contacto">
+  <div class="container">
+
+    <div class="sh reveal" style="margin-bottom:3rem;">
+      <span class="section-tag">Contáctenos</span>
+      <h2 class="section-title">Consulte con Nosotros</h2>
+      <div class="section-divider"></div>
+      <p class="section-lead">Proteja su empresa, sus contratos y sus operaciones con la asesoría jurídica que merecen. La primera consulta es el primer paso hacia la tranquilidad legal.</p>
+    </div>
+
+    <div class="contact-grid">
+
+      <!-- ── Formulario ── -->
+      <div class="contact-form-card reveal">
+        <h3>Envíenos su Consulta</h3>
+        <p>Complete el formulario y nos pondremos en contacto con usted a la brevedad. Toda información es tratada con absoluta confidencialidad.</p>
+
+        <form id="contactForm" action="https://formspree.io/f/mnjleggb" method="POST">
+          <input type="hidden" name="_subject" value="Nueva consulta — Bufete Torres Herrera" />
+          <div class="form-row">
+            <div class="form-group">
+              <label for="nombre">Nombre completo *</label>
+              <input type="text" id="nombre" name="nombre" placeholder="Su nombre" required />
+            </div>
+            <div class="form-group">
+              <label for="empresa">Empresa / Organización</label>
+              <input type="text" id="empresa" name="empresa" placeholder="Opcional" />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="telefono">Teléfono *</label>
+              <input type="tel" id="telefono" name="telefono" placeholder="+(504) 0000-0000" required />
+            </div>
+            <div class="form-group">
+              <label for="email">Correo electrónico *</label>
+              <input type="email" id="email" name="email" placeholder="correo@empresa.com" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="area">Área de consulta *</label>
+            <select id="area" name="area" required>
+              <option value="" disabled selected>Seleccione un área...</option>
+              <option value="Litigios Civiles">Litigios Civiles</option>
+              <option value="Derecho Laboral Empresarial">Derecho Laboral Empresarial</option>
+              <option value="Derecho Marítimo y Portuario">Derecho Marítimo y Portuario</option>
+              <option value="Trámites Aduaneros">Trámites Aduaneros</option>
+              <option value="Trámites Administrativos">Trámites Administrativos</option>
+              <option value="Asesoría Notarial">Asesoría Notarial</option>
+              <option value="Otro">Otro / Consulta General</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="mensaje">Descripción del asunto *</label>
+            <textarea id="mensaje" name="mensaje" placeholder="Describa brevemente su situación o consulta..." required></textarea>
+          </div>
+          <div class="form-check">
+            <input type="checkbox" id="privacidad" name="privacidad" required />
+            <label for="privacidad">Entiendo que la información proporcionada es confidencial y será utilizada únicamente para dar respuesta a mi consulta.</label>
+          </div>
+          <button type="submit" class="btn-submit">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 2L11 13M22 2L15 22l-4-9-9-4 20-7z"/></svg>
+            Enviar Consulta
+          </button>
+        </form>
+
+        <!-- Mensaje de éxito -->
+        <div class="form-success" id="formSuccess">
+          <div class="success-icon">✅</div>
+          <h4>¡Consulta recibida!</h4>
+          <p>Hemos recibido su mensaje. Nos comunicaremos con usted a la brevedad posible.</p>
+        </div>
+      </div>
+
+      <!-- ── Canales directos ── -->
+      <div class="contact-info reveal">
+        <div class="contact-info-header">
+          <h3>Canales Directos</h3>
+          <p>Puede también contactarnos directamente por cualquiera de estos medios.</p>
+        </div>
+
+        <a href="tel:+50498892708" class="ch-btn">
+          <span class="ch-ico">📞</span>
+          <div>
+            <div class="ch-lbl">Llámenos</div>
+            <div class="ch-val">+(504) 9889-2708</div>
+          </div>
+        </a>
+
+        <a href="https://wa.me/50498892708" class="ch-btn" target="_blank" rel="noopener">
+          <span class="ch-ico">💬</span>
+          <div>
+            <div class="ch-lbl">WhatsApp</div>
+            <div class="ch-val">+(504) 9889-2708</div>
+          </div>
+        </a>
+
+        <a href="mailto:tsdaniel91@gmail.com" class="ch-btn">
+          <span class="ch-ico">✉️</span>
+          <div>
+            <div class="ch-lbl">Correo Electrónico</div>
+            <div class="ch-val">tsdaniel91@gmail.com</div>
+          </div>
+        </a>
+
+        <div class="ch-address">
+          <span style="font-size:1.35rem; flex-shrink:0; margin-top:.15rem;">📍</span>
+          <div class="ch-address-text">
+            <strong>Oficinas</strong>
+            Condominios Metrópolis, Torre 1, Nivel 18<br>
+            Bulevar Suyapa, Tegucigalpa, M.D.C.<br>
+            Honduras, C.A.
+          </div>
+        </div>
+
+        <p class="ch-note">Toda consulta es estrictamente confidencial</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── Footer ────────────────────────────────────────────────────── -->
+<footer>
+  <div class="foot-inner">
+    <div>
+      <div class="foot-brand">Bufete <span>Torres Herrera</span></div>
+      <div class="foot-sub">Abogados &amp; Consultores Jurídicos · CAH N.º 19210</div>
+      <div class="foot-sub" style="margin-top:.2rem;">
+        Condominios Metrópolis, Torre 1, Nivel 18, Bulevar Suyapa<br>
+        Tegucigalpa, M.D.C., Honduras, C.A.
+      </div>
+    </div>
+    <ul class="foot-nav">
+      <li><a href="#nosotros">Nosotros</a></li>
+      <li><a href="#areas">Áreas de Práctica</a></li>
+      <li><a href="#clientes">Sectores</a></li>
+      <li><a href="#proceso">Proceso</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+    <div class="foot-copy">© 2026 Bufete Torres Herrera. Todos los derechos reservados.</div>
+  </div>
+</footer>
+
+<!-- ── Scripts ───────────────────────────────────────────────────── -->
+<script>
+  /* Nav scroll effect */
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 40);
+  }, { passive: true });
+
+  /* Mobile menu toggle */
+  const burger  = document.getElementById('burger');
+  const mobMenu = document.getElementById('mob-menu');
+  burger.addEventListener('click', () => {
+    burger.classList.toggle('open');
+    mobMenu.classList.toggle('open');
+  });
+  mobMenu.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      burger.classList.remove('open');
+      mobMenu.classList.remove('open');
+    });
+  });
+
+  /* Scroll-reveal */
+  const revealEls = document.querySelectorAll('.reveal');
+  const revealObs = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        const delay = parseInt(entry.target.dataset.delay || 0) * 90;
+        setTimeout(() => entry.target.classList.add('visible'), delay);
+        revealObs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -50px 0px' });
+
+  revealEls.forEach((el, i) => {
+    el.dataset.delay = i % 4;
+    revealObs.observe(el);
+  });
+
+  /* Contact form — Formspree AJAX submit */
+  const form        = document.getElementById('contactForm');
+  const successBox  = document.getElementById('formSuccess');
+  if (form) {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const btn = form.querySelector('.btn-submit');
+      const originalHTML = btn.innerHTML;
+      btn.innerHTML = 'Enviando&hellip;';
+      btn.disabled = true;
+      try {
+        const res = await fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { 'Accept': 'application/json' }
+        });
+        if (res.ok) {
+          form.style.display = 'none';
+          successBox.style.display = 'block';
+        } else {
+          btn.innerHTML = originalHTML;
+          btn.disabled = false;
+          btn.style.background = '#c0392b';
+          setTimeout(() => { btn.style.background = ''; }, 3000);
+        }
+      } catch(err) {
+        btn.innerHTML = originalHTML;
+        btn.disabled = false;
+        btn.style.background = '#c0392b';
+        setTimeout(() => { btn.style.background = ''; }, 3000);
+      }
+    });
+  }
+
+  /* Active nav link highlight on scroll */
+  const sections  = document.querySelectorAll('section[id]');
+  const navAnchors = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 130) current = s.id;
+    });
+    navAnchors.forEach(a => {
+      a.style.color = (a.getAttribute('href') === '#' + current) ? '#ffffff' : '';
+    });
+  }, { passive: true });
+</script>
+
+</body>
+</html>
