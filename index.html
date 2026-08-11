@@ -697,6 +697,22 @@
       .valor-grid   { grid-template-columns: 1fr; }
       .areas-grid   { grid-template-columns: 1fr; }
     }
+
+    /* ── Language switcher ─────────────────────────────── */
+    .lang-switch { display: flex; align-items: center; gap: 2px; margin-left: 1.1rem;
+      border: 1px solid rgba(255,255,255,.25); border-radius: 999px; padding: 3px; }
+    .lang-btn { background: none; border: none; cursor: pointer; font-family: 'Inter', sans-serif;
+      font-size: .72rem; font-weight: 600; letter-spacing: .05em; color: rgba(255,255,255,.65);
+      padding: .28rem .55rem; border-radius: 999px; transition: all .22s ease; line-height: 1; }
+    .lang-btn:hover { color: #fff; }
+    .lang-btn.active { background: #c9a24b; color: #10233f; }
+    #navbar.scrolled .lang-switch { border-color: rgba(16,35,63,.25); }
+    #navbar.scrolled .lang-btn { color: rgba(16,35,63,.6); }
+    #navbar.scrolled .lang-btn:hover { color: #10233f; }
+    #navbar.scrolled .lang-btn.active { background: #10233f; color: #fff; }
+    .mob-lang { display: flex; gap: .5rem; justify-content: center; padding: 1rem 0 .4rem; }
+    .mob-lang .lang-btn { font-size: .85rem; padding: .45rem .9rem; border: 1px solid rgba(255,255,255,.3); }
+    @media (max-width: 900px) { .nav-wrap > .lang-switch { display: none; } }
   </style>
 </head>
 <body>
@@ -715,6 +731,11 @@
       <li><a href="#proceso">Proceso</a></li>
       <li><a href="#contacto" class="nav-cta">Consulta Inicial</a></li>
     </ul>
+    <div class="lang-switch" aria-label="Idioma / Language">
+      <button class="lang-btn active" data-lang="es" onclick="bthSetLang('es')" title="Español">ES</button>
+      <button class="lang-btn" data-lang="en" onclick="bthSetLang('en')" title="English">EN</button>
+      <button class="lang-btn" data-lang="pt" onclick="bthSetLang('pt')" title="Português">PT</button>
+    </div>
     <button class="nav-burger" id="burger" aria-label="Menú">
       <span class="burger-bar"></span>
       <span class="burger-bar"></span>
@@ -730,6 +751,11 @@
   <a href="#clientes">Sectores</a>
   <a href="#proceso">Proceso</a>
   <a href="#contacto">Consulta Inicial</a>
+  <div class="mob-lang" aria-label="Idioma / Language">
+    <button class="lang-btn active" data-lang="es" onclick="bthSetLang('es')">ES</button>
+    <button class="lang-btn" data-lang="en" onclick="bthSetLang('en')">EN</button>
+    <button class="lang-btn" data-lang="pt" onclick="bthSetLang('pt')">PT</button>
+  </div>
 </div>
 
 <!-- ── Hero ─────────────────────────────────────────────────────── -->
@@ -1323,5 +1349,428 @@
   }, { passive: true });
 </script>
 
+<script>
+/* ============================================================
+   BUFETE TORRES HERRERA — Sistema de idiomas ES / EN / PT
+   Motor de traducción por nodos de texto + persistencia local
+   ============================================================ */
+(function () {
+  "use strict";
+
+  var I18N = {
+    en: {
+      "Bufete Torres Herrera | Abogados Especialistas en Honduras": "Torres Herrera Law Firm | Specialized Attorneys in Honduras",
+      "Abogados & Consultores Jurídicos": "Attorneys & Legal Consultants",
+      "Nosotros": "About Us",
+      "Áreas de Práctica": "Practice Areas",
+      "Sectores": "Industries",
+      "Proceso": "Our Process",
+      "Consulta Inicial": "Initial Consultation",
+      "Bufete Torres Herrera · Honduras": "Torres Herrera Law Firm · Honduras",
+      "Abogado Litigante.": "Trial Attorney.",
+      "Resultados concretos": "Concrete results",
+      "para su empresa.": "for your business.",
+      "Especialista en litigios civiles, laborales y mercantiles, trámites administrativos y aduaneros, y asesoría notarial. Representación estratégica ante tribunales e instituciones del Estado con un enfoque claro: proteger sus intereses y ganar.": "Specialist in civil, labor and commercial litigation, administrative and customs proceedings, and notarial services. Strategic representation before courts and government institutions with one clear focus: protecting your interests and winning.",
+      "Solicitar Consulta": "Request a Consultation",
+      "Ver Áreas de Práctica": "View Practice Areas",
+      "Litigios Civiles, Laborales y Mercantiles": "Civil, Labor & Commercial Litigation",
+      "Trámites Administrativos y Aduaneros": "Administrative & Customs Proceedings",
+      "Asociado a Notario Público": "Associated with a Notary Public",
+      "Derecho Marítimo y Gestión Portuaria": "Maritime Law & Port Management",
+      "CAH N.º 19210 · UNAH": "Honduran Bar Assoc. No. 19210 · UNAH",
+      "Litigante Activo": "Active Trial Attorney",
+      "Tribunales Civiles y Laborales · Honduras": "Civil & Labor Courts · Honduras",
+      "Sobre el Bufete": "About the Firm",
+      "Litigante experto al servicio de su empresa": "An expert litigator at the service of your business",
+      "Bufete Torres Herrera es un despacho especializado en litigios civiles, laborales y mercantiles, con cobertura integral en trámites administrativos, aduaneros y asesoría notarial para empresas, corporaciones y ejecutivos en Tegucigalpa y toda Honduras.": "Torres Herrera Law Firm specializes in civil, labor and commercial litigation, with comprehensive coverage of administrative and customs proceedings and notarial services for companies, corporations and executives in Tegucigalpa and throughout Honduras.",
+      "Con presencia activa en los Juzgados y Tribunales de la República, combinamos estrategia jurídica y conocimiento técnico profundo para defender sus intereses con eficacia. Entendemos que cada caso tiene consecuencias reales sobre su patrimonio y operaciones — y actuamos en consecuencia.": "With an active presence before the Courts and Tribunals of the Republic, we combine legal strategy and deep technical knowledge to defend your interests effectively. We understand that every case has real consequences for your assets and operations — and we act accordingly.",
+      "Especialista en Litigios Civiles, Laborales y Mercantiles": "Specialist in Civil, Labor & Commercial Litigation",
+      "— Representación activa ante Juzgados y Tribunales de la República de Honduras": "— Active representation before the Courts and Tribunals of the Republic of Honduras",
+      "— Servicio notarial pleno para personas naturales y jurídicas": "— Full notarial services for individuals and legal entities",
+      "Especialista en trámites aduaneros y administrativos": "Specialist in customs and administrative proceedings",
+      "— Regímenes especiales, importación, exportación, ZOLI y ZIP": "— Special regimes, imports, exports, Free Zones (ZOLI) and Industrial Processing Zones (ZIP)",
+      "Formación en Derecho Marítimo y Gestión Portuaria": "Trained in Maritime Law & Port Management",
+      "— Universidad Nacional Autónoma de Honduras (UNAH)": "— National Autonomous University of Honduras (UNAH)",
+      "Miembro activo": "Active member",
+      "del Colegio de Abogados de Honduras — Colegiación N.º 19210": "of the Honduran Bar Association — Registration No. 19210",
+      "Respaldo Notarial": "Notarial Backing",
+      "Abogado Daniel Torres Herrera": "Attorney Daniel Torres Herrera",
+      "Notario Público & Abogado · Honduras": "Notary Public & Attorney · Honduras",
+      "Más de 50 años de ejercicio ininterrumpido de la abogacía y la fe pública en Honduras. Su vasta trayectoria institucional y profundo conocimiento del derecho hondureño respaldan la solidez y plena validez jurídica de cada instrumento notarial que suscribimos.": "Over 50 years of uninterrupted practice of law and notarial authority in Honduras. His vast institutional career and deep knowledge of Honduran law guarantee the soundness and full legal validity of every notarial instrument we execute.",
+      "Años de ejercicio": "Years of practice",
+      "en Honduras": "in Honduras",
+      "Especialidades": "Specialties",
+      "Atención integral en las áreas del derecho más críticas para empresas, corporaciones y grupos de inversión que operan en Honduras.": "Comprehensive counsel in the areas of law most critical to companies, corporations and investment groups operating in Honduras.",
+      "Litigios Civiles": "Civil Litigation",
+      "Representación estratégica ante los juzgados y tribunales civiles de la República. Defendemos su patrimonio, sus contratos y sus derechos con rigor procesal y enfoque en resultados.": "Strategic representation before the civil courts and tribunals of the Republic. We defend your assets, contracts and rights with procedural rigor and a results-driven approach.",
+      "Incumplimiento de contratos y obligaciones": "Breach of contracts and obligations",
+      "Cobro judicial de deudas y ejecución de garantías": "Judicial debt collection and enforcement of security interests",
+      "Disputas sobre bienes inmuebles y derechos reales": "Real estate and property rights disputes",
+      "Reclamaciones por daños y perjuicios": "Damages claims",
+      "Procesos ejecutivos y medidas cautelares": "Enforcement proceedings and injunctive relief",
+      "Recursos de apelación ante tribunales superiores": "Appeals before higher courts",
+      "Litigios Laborales": "Labor & Employment Litigation",
+      "Defensa activa y asesoría preventiva en conflictos laborales. Protegemos a empleadores y empleados ante los Juzgados de Trabajo con estrategia sólida y conocimiento profundo de la ley.": "Active defense and preventive counsel in labor disputes. We protect employers and employees before the Labor Courts with solid strategy and deep knowledge of the law.",
+      "Defensa en demandas por despido injustificado": "Defense against wrongful termination claims",
+      "Liquidaciones y negociación de prestaciones laborales": "Severance settlements and negotiation of employment benefits",
+      "Auditorías de cumplimiento laboral preventivas": "Preventive labor compliance audits",
+      "Contratos de trabajo y reglamentos internos": "Employment contracts and internal workplace regulations",
+      "Representación ante la Secretaría de Trabajo": "Representation before the Ministry of Labor",
+      "Responsabilidad solidaria y subcontratación": "Joint liability and outsourcing matters",
+      "Derecho Mercantil": "Commercial & Corporate Law",
+      "Asesoría y representación en asuntos comerciales y empresariales. Protegemos sus negocios, contratos e inversiones con dominio del derecho mercantil hondureño y su aplicación práctica.": "Counsel and representation in commercial and business matters. We protect your businesses, contracts and investments with command of Honduran commercial law and its practical application.",
+      "Constitución y estructuración de sociedades mercantiles": "Incorporation and structuring of business entities",
+      "Contratos comerciales, distribución y agencia": "Commercial, distribution and agency agreements",
+      "Compraventa, fusión y adquisición de empresas": "Business purchase and sale, mergers and acquisitions",
+      "Títulos valores: cheques, pagarés y letras de cambio": "Negotiable instruments: checks, promissory notes and bills of exchange",
+      "Defensa en procesos mercantiles ante tribunales": "Defense in commercial court proceedings",
+      "Cumplimiento mercantil y gobierno corporativo": "Commercial compliance and corporate governance",
+      "Asesoría Notarial": "Notarial Services",
+      "Servicio notarial completo en asocio con Notario Público. Respaldo documental con plena validez legal para todas sus operaciones, contratos y actos jurídicos.": "Complete notarial services in association with a Notary Public. Documentary backing with full legal validity for all your transactions, contracts and legal acts.",
+      "Escrituración de bienes inmuebles y traspasos": "Real estate deeds and property transfers",
+      "Constitución y modificación de sociedades mercantiles": "Incorporation and amendment of business entities",
+      "Protocolización de contratos y acuerdos privados": "Notarization of private contracts and agreements",
+      "Poderes especiales, generales y amplísimos": "Special, general and plenary powers of attorney",
+      "Actas de juntas directivas y asambleas de socios": "Board and shareholder meeting minutes",
+      "Testamentos y disposiciones de última voluntad": "Wills and testamentary dispositions",
+      "Trámites Administrativos": "Administrative Proceedings",
+      "Gestión integral ante las instituciones del Estado hondureño. Obtenemos permisos, licencias y autorizaciones, e impugnamos resoluciones adversas con eficacia y celeridad.": "Comprehensive management before Honduran government institutions. We obtain permits, licenses and authorizations, and challenge adverse rulings effectively and promptly.",
+      "Permisos de operación y licencias empresariales": "Operating permits and business licenses",
+      "Recursos administrativos ante entidades del Estado": "Administrative appeals before government entities",
+      "Contratación pública, licitaciones y concesiones": "Public procurement, tenders and concessions",
+      "Procedimientos ante la Procuraduría General de la República": "Proceedings before the Office of the Attorney General",
+      "Impugnación de resoluciones administrativas": "Challenges to administrative rulings",
+      "Autorizaciones y registros ante entes reguladores": "Authorizations and registrations before regulatory bodies",
+      "Trámites Aduaneros": "Customs Law & Procedures",
+      "Representación y asesoría en procedimientos ante la Administración Aduanera de Honduras. Resolvemos controversias y agilizamos operaciones de comercio exterior con precisión.": "Representation and counsel in proceedings before the Honduran Customs Administration. We resolve disputes and expedite foreign trade operations with precision.",
+      "Regímenes aduaneros especiales (RIT, ZOLI, ZIP)": "Special customs regimes (RIT, ZOLI, ZIP)",
+      "Recursos y apelaciones ante la autoridad aduanera": "Appeals before the customs authority",
+      "Controversias por clasificación arancelaria": "Tariff classification disputes",
+      "Gestión de importaciones y exportaciones": "Import and export management",
+      "Zonas Libres de Industria y Comercio (ZOLI)": "Free Trade and Industry Zones (ZOLI)",
+      "Zonas Industriales de Procesamiento (ZIP)": "Industrial Processing Zones (ZIP)",
+      "Derecho Marítimo y Portuario": "Maritime & Port Law",
+      "Asesoría jurídica en materia marítima y portuaria para empresas con operaciones de comercio exterior, navieras y agencias logísticas que requieren representación ante las autoridades competentes.": "Legal counsel in maritime and port matters for foreign trade companies, shipping lines and logistics agencies requiring representation before the competent authorities.",
+      "Contratos de transporte marítimo y fletamento": "Maritime transport and charter agreements",
+      "Disputas sobre carga, flete y averías marítimas": "Cargo, freight and marine average disputes",
+      "Responsabilidad del armador y operadores portuarios": "Shipowner and port operator liability",
+      "Trámites ante la Empresa Nacional Portuaria (ENP)": "Proceedings before the National Port Authority (ENP)",
+      "Gestión ante la Dirección General de la Marina Mercante": "Matters before the Merchant Marine Directorate",
+      "Contratos de concesión y operación portuaria": "Port concession and operation agreements",
+      "Nuestra Propuesta de Valor": "Our Value Proposition",
+      "¿Por qué Bufete Torres Herrera?": "Why Torres Herrera Law Firm?",
+      "Cada decisión jurídica tiene consecuencias concretas sobre su patrimonio y reputación. Elija un despacho que comprende la diferencia entre actuar bien y actuar a tiempo.": "Every legal decision has concrete consequences for your assets and reputation. Choose a firm that understands the difference between acting well and acting in time.",
+      "Especialización Real": "True Specialization",
+      "Dominio técnico profundo en litigios civiles y laborales, trámites aduaneros y administrativos, y asesoría notarial. No generalizamos — nos enfocamos en lo que hacemos bien.": "Deep technical command of civil and labor litigation, customs and administrative proceedings, and notarial services. We don't generalize — we focus on what we do well.",
+      "Confidencialidad Absoluta": "Absolute Confidentiality",
+      "La discreción es parte esencial de nuestro ejercicio profesional. Sus asuntos jurídicos y la información de su empresa están protegidos por el más estricto secreto profesional.": "Discretion is an essential part of our professional practice. Your legal matters and your company's information are protected by the strictest attorney-client privilege.",
+      "Enfoque en Resultados": "Results-Driven Approach",
+      "Comprendemos que resolver un conflicto jurídico con rapidez y precisión reduce pérdidas y protege su reputación. Actuamos con urgencia estratégica desde el primer día.": "We understand that resolving a legal dispute quickly and precisely reduces losses and protects your reputation. We act with strategic urgency from day one.",
+      "Cobertura Integral": "Comprehensive Coverage",
+      "Desde litigios complejos hasta trámites administrativos cotidianos, ofrecemos acompañamiento jurídico continuo que cubre todas las necesidades legales de su empresa.": "From complex litigation to everyday administrative filings, we provide continuous legal support covering all of your company's legal needs.",
+      "¿A Quién Servimos?": "Who We Serve",
+      "Sectores que Atendemos": "Industries We Serve",
+      "Atendemos empresas líderes, grupos corporativos y ejecutivos en los sectores más dinámicos de la economía hondureña.": "We serve leading companies, corporate groups and executives in the most dynamic sectors of the Honduran economy.",
+      "Industria Maquiladora": "Maquila Industry",
+      "Cumplimiento laboral, regímenes aduaneros especiales y gestión jurídica integral para empresas en Zonas Francas y ZIP.": "Labor compliance, special customs regimes and comprehensive legal management for companies in Free Zones and ZIPs.",
+      "Logística y Transporte Marítimo": "Logistics & Maritime Transport",
+      "Asesoría especializada para navieras, agencias portuarias y operadores en Puerto Cortés y demás puertos nacionales.": "Specialized counsel for shipping lines, port agencies and operators in Puerto Cortés and other national ports.",
+      "Agroindustria y Exportación": "Agribusiness & Exports",
+      "Trámites de exportación, contratos comerciales y cumplimiento regulatorio para los sectores caficultor, palmicultor y agroexportador.": "Export procedures, commercial contracts and regulatory compliance for the coffee, palm oil and agro-export sectors.",
+      "Construcción e Inmobiliario": "Construction & Real Estate",
+      "Escrituración, permisos de construcción, litigios sobre bienes inmuebles y contratos de obra pública y privada.": "Deeds, construction permits, real estate litigation and public and private works contracts.",
+      "Grupos Corporativos y Holdings": "Corporate Groups & Holdings",
+      "Constitución de sociedades, gobierno corporativo, juntas directivas y asesoría jurídica continua para conglomerados empresariales.": "Company incorporation, corporate governance, boards of directors and ongoing legal counsel for business conglomerates.",
+      "Sector Financiero e Inversión": "Finance & Investment",
+      "Contratos financieros, ejecución de garantías, cobro judicial de obligaciones y estructuración de inversiones.": "Financial contracts, enforcement of security interests, judicial collection of obligations and investment structuring.",
+      "Importadores y Distribuidores": "Importers & Distributors",
+      "Gestión aduanera, clasificación arancelaria, recursos ante la autoridad y optimización de regímenes especiales de importación.": "Customs management, tariff classification, appeals before the authority and optimization of special import regimes.",
+      "Energía y Concesiones": "Energy & Concessions",
+      "Contratos de concesión, autorizaciones estatales, licitaciones públicas y cumplimiento regulatorio en el sector energético.": "Concession agreements, government authorizations, public tenders and regulatory compliance in the energy sector.",
+      "Metodología de Trabajo": "How We Work",
+      "Nuestro Proceso": "Our Process",
+      "Un enfoque estructurado, transparente y orientado a resultados, desde el primer contacto hasta la resolución definitiva de su asunto.": "A structured, transparent and results-oriented approach, from first contact to the final resolution of your matter.",
+      "Evaluamos su situación con total confidencialidad y le brindamos una opinión profesional honesta sobre su caso.": "We assess your situation in complete confidence and give you an honest professional opinion on your case.",
+      "Diagnóstico Jurídico": "Legal Assessment",
+      "Analizamos en profundidad los hechos, documentos y riesgos para construir un cuadro jurídico completo y preciso.": "We analyze the facts, documents and risks in depth to build a complete and precise legal picture.",
+      "Estrategia Legal": "Legal Strategy",
+      "Diseñamos la ruta jurídica más efectiva: escenarios claros, plazos definidos y objetivos concretos y medibles.": "We design the most effective legal path: clear scenarios, defined timelines and concrete, measurable objectives.",
+      "Ejecución": "Execution",
+      "Actuamos con rigor y precisión ante tribunales, instituciones públicas o contrapartes, según la estrategia trazada.": "We act with rigor and precision before courts, public institutions or counterparties, following the strategy laid out.",
+      "Seguimiento": "Follow-Up",
+      "Le mantenemos informado en cada etapa y ajustamos la estrategia de manera ágil ante cualquier cambio en el proceso.": "We keep you informed at every stage and adjust the strategy swiftly in response to any change in the proceedings.",
+      "Contáctenos": "Contact Us",
+      "Consulte con Nosotros": "Consult With Us",
+      "Proteja su empresa, sus contratos y sus operaciones con la asesoría jurídica que merecen. La primera consulta es el primer paso hacia la tranquilidad legal.": "Protect your business, your contracts and your operations with the legal counsel they deserve. The first consultation is the first step toward legal peace of mind.",
+      "Envíenos su Consulta": "Send Us Your Inquiry",
+      "Complete el formulario y nos pondremos en contacto con usted a la brevedad. Toda información es tratada con absoluta confidencialidad.": "Complete the form and we will contact you promptly. All information is treated with absolute confidentiality.",
+      "Nombre completo *": "Full name *",
+      "Empresa / Organización": "Company / Organization",
+      "Teléfono *": "Phone *",
+      "Correo electrónico *": "Email *",
+      "Área de consulta *": "Area of inquiry *",
+      "Seleccione un área...": "Select an area...",
+      "Derecho Laboral Empresarial": "Corporate Labor Law",
+      "Otro / Consulta General": "Other / General Inquiry",
+      "Descripción del asunto *": "Description of the matter *",
+      "Entiendo que la información proporcionada es confidencial y será utilizada únicamente para dar respuesta a mi consulta.": "I understand that the information provided is confidential and will be used solely to respond to my inquiry.",
+      "Enviar Consulta": "Submit Inquiry",
+      "¡Consulta recibida!": "Inquiry received!",
+      "Hemos recibido su mensaje. Nos comunicaremos con usted a la brevedad posible.": "We have received your message. We will get back to you as soon as possible.",
+      "Canales Directos": "Direct Channels",
+      "Puede también contactarnos directamente por cualquiera de estos medios.": "You may also reach us directly through any of these channels.",
+      "Llámenos": "Call Us",
+      "Correo Electrónico": "Email",
+      "Oficinas": "Offices",
+      "Condominios Metrópolis, Torre 1, Nivel 18": "Metrópolis Condominiums, Tower 1, 18th Floor",
+      "Bulevar Suyapa, Tegucigalpa, M.D.C.": "Suyapa Boulevard, Tegucigalpa, M.D.C.",
+      "Honduras, C.A.": "Honduras, Central America",
+      "Toda consulta es estrictamente confidencial": "All inquiries are strictly confidential",
+      "Abogados & Consultores Jurídicos · CAH N.º 19210": "Attorneys & Legal Consultants · Bar Reg. No. 19210",
+      "Condominios Metrópolis, Torre 1, Nivel 18, Bulevar Suyapa": "Metrópolis Condominiums, Tower 1, 18th Floor, Suyapa Boulevard",
+      "Tegucigalpa, M.D.C., Honduras, C.A.": "Tegucigalpa, M.D.C., Honduras, Central America",
+      "Contacto": "Contact",
+      "© 2026 Bufete Torres Herrera. Todos los derechos reservados.": "© 2026 Torres Herrera Law Firm. All rights reserved."
+    },
+    pt: {
+      "Bufete Torres Herrera | Abogados Especialistas en Honduras": "Escritório Torres Herrera | Advogados Especialistas em Honduras",
+      "Abogados & Consultores Jurídicos": "Advogados & Consultores Jurídicos",
+      "Nosotros": "Sobre Nós",
+      "Áreas de Práctica": "Áreas de Atuação",
+      "Sectores": "Setores",
+      "Proceso": "Processo",
+      "Consulta Inicial": "Consulta Inicial",
+      "Bufete Torres Herrera · Honduras": "Escritório Torres Herrera · Honduras",
+      "Abogado Litigante.": "Advogado Litigante.",
+      "Resultados concretos": "Resultados concretos",
+      "para su empresa.": "para a sua empresa.",
+      "Especialista en litigios civiles, laborales y mercantiles, trámites administrativos y aduaneros, y asesoría notarial. Representación estratégica ante tribunales e instituciones del Estado con un enfoque claro: proteger sus intereses y ganar.": "Especialista em litígios cíveis, trabalhistas e empresariais, procedimentos administrativos e aduaneiros, e serviços notariais. Representação estratégica perante tribunais e instituições do Estado com um foco claro: proteger seus interesses e vencer.",
+      "Solicitar Consulta": "Solicitar Consulta",
+      "Ver Áreas de Práctica": "Ver Áreas de Atuação",
+      "Litigios Civiles, Laborales y Mercantiles": "Litígios Cíveis, Trabalhistas e Empresariais",
+      "Trámites Administrativos y Aduaneros": "Procedimentos Administrativos e Aduaneiros",
+      "Asociado a Notario Público": "Associado a Notário Público",
+      "Derecho Marítimo y Gestión Portuaria": "Direito Marítimo e Gestão Portuária",
+      "CAH N.º 19210 · UNAH": "Ordem dos Advogados de Honduras N.º 19210 · UNAH",
+      "Litigante Activo": "Litigante Ativo",
+      "Tribunales Civiles y Laborales · Honduras": "Tribunais Cíveis e Trabalhistas · Honduras",
+      "Sobre el Bufete": "Sobre o Escritório",
+      "Litigante experto al servicio de su empresa": "Um litigante experiente a serviço da sua empresa",
+      "Bufete Torres Herrera es un despacho especializado en litigios civiles, laborales y mercantiles, con cobertura integral en trámites administrativos, aduaneros y asesoría notarial para empresas, corporaciones y ejecutivos en Tegucigalpa y toda Honduras.": "O Escritório Torres Herrera é especializado em litígios cíveis, trabalhistas e empresariais, com cobertura integral em procedimentos administrativos, aduaneiros e serviços notariais para empresas, corporações e executivos em Tegucigalpa e em toda Honduras.",
+      "Con presencia activa en los Juzgados y Tribunales de la República, combinamos estrategia jurídica y conocimiento técnico profundo para defender sus intereses con eficacia. Entendemos que cada caso tiene consecuencias reales sobre su patrimonio y operaciones — y actuamos en consecuencia.": "Com presença ativa nos Juízos e Tribunais da República, combinamos estratégia jurídica e profundo conhecimento técnico para defender seus interesses com eficácia. Entendemos que cada caso tem consequências reais sobre seu patrimônio e operações — e agimos em conformidade.",
+      "Especialista en Litigios Civiles, Laborales y Mercantiles": "Especialista em Litígios Cíveis, Trabalhistas e Empresariais",
+      "— Representación activa ante Juzgados y Tribunales de la República de Honduras": "— Representação ativa perante Juízos e Tribunais da República de Honduras",
+      "— Servicio notarial pleno para personas naturales y jurídicas": "— Serviço notarial completo para pessoas físicas e jurídicas",
+      "Especialista en trámites aduaneros y administrativos": "Especialista em procedimentos aduaneiros e administrativos",
+      "— Regímenes especiales, importación, exportación, ZOLI y ZIP": "— Regimes especiais, importação, exportação, Zonas Francas (ZOLI) e ZIP",
+      "Formación en Derecho Marítimo y Gestión Portuaria": "Formação em Direito Marítimo e Gestão Portuária",
+      "— Universidad Nacional Autónoma de Honduras (UNAH)": "— Universidade Nacional Autônoma de Honduras (UNAH)",
+      "Miembro activo": "Membro ativo",
+      "del Colegio de Abogados de Honduras — Colegiación N.º 19210": "da Ordem dos Advogados de Honduras — Inscrição N.º 19210",
+      "Respaldo Notarial": "Respaldo Notarial",
+      "Abogado Daniel Torres Herrera": "Advogado Daniel Torres Herrera",
+      "Notario Público & Abogado · Honduras": "Notário Público & Advogado · Honduras",
+      "Más de 50 años de ejercicio ininterrumpido de la abogacía y la fe pública en Honduras. Su vasta trayectoria institucional y profundo conocimiento del derecho hondureño respaldan la solidez y plena validez jurídica de cada instrumento notarial que suscribimos.": "Mais de 50 anos de exercício ininterrupto da advocacia e da fé pública em Honduras. Sua vasta trajetória institucional e profundo conhecimento do direito hondurenho garantem a solidez e a plena validade jurídica de cada instrumento notarial que subscrevemos.",
+      "Años de ejercicio": "Anos de exercício",
+      "en Honduras": "em Honduras",
+      "Especialidades": "Especialidades",
+      "Atención integral en las áreas del derecho más críticas para empresas, corporaciones y grupos de inversión que operan en Honduras.": "Atendimento integral nas áreas do direito mais críticas para empresas, corporações e grupos de investimento que operam em Honduras.",
+      "Litigios Civiles": "Litígios Cíveis",
+      "Representación estratégica ante los juzgados y tribunales civiles de la República. Defendemos su patrimonio, sus contratos y sus derechos con rigor procesal y enfoque en resultados.": "Representação estratégica perante os juízos e tribunais cíveis da República. Defendemos seu patrimônio, seus contratos e seus direitos com rigor processual e foco em resultados.",
+      "Incumplimiento de contratos y obligaciones": "Descumprimento de contratos e obrigações",
+      "Cobro judicial de deudas y ejecución de garantías": "Cobrança judicial de dívidas e execução de garantias",
+      "Disputas sobre bienes inmuebles y derechos reales": "Disputas sobre bens imóveis e direitos reais",
+      "Reclamaciones por daños y perjuicios": "Ações de indenização por perdas e danos",
+      "Procesos ejecutivos y medidas cautelares": "Processos de execução e medidas cautelares",
+      "Recursos de apelación ante tribunales superiores": "Recursos de apelação perante tribunais superiores",
+      "Litigios Laborales": "Litígios Trabalhistas",
+      "Defensa activa y asesoría preventiva en conflictos laborales. Protegemos a empleadores y empleados ante los Juzgados de Trabajo con estrategia sólida y conocimiento profundo de la ley.": "Defesa ativa e assessoria preventiva em conflitos trabalhistas. Protegemos empregadores e empregados perante a Justiça do Trabalho com estratégia sólida e profundo conhecimento da lei.",
+      "Defensa en demandas por despido injustificado": "Defesa em ações por demissão sem justa causa",
+      "Liquidaciones y negociación de prestaciones laborales": "Rescisões e negociação de verbas trabalhistas",
+      "Auditorías de cumplimiento laboral preventivas": "Auditorias preventivas de conformidade trabalhista",
+      "Contratos de trabajo y reglamentos internos": "Contratos de trabalho e regulamentos internos",
+      "Representación ante la Secretaría de Trabajo": "Representação perante o Ministério do Trabalho",
+      "Responsabilidad solidaria y subcontratación": "Responsabilidade solidária e terceirização",
+      "Derecho Mercantil": "Direito Empresarial",
+      "Asesoría y representación en asuntos comerciales y empresariales. Protegemos sus negocios, contratos e inversiones con dominio del derecho mercantil hondureño y su aplicación práctica.": "Assessoria e representação em assuntos comerciais e empresariais. Protegemos seus negócios, contratos e investimentos com domínio do direito empresarial hondurenho e sua aplicação prática.",
+      "Constitución y estructuración de sociedades mercantiles": "Constituição e estruturação de sociedades empresariais",
+      "Contratos comerciales, distribución y agencia": "Contratos comerciais, de distribuição e agência",
+      "Compraventa, fusión y adquisición de empresas": "Compra e venda, fusões e aquisições de empresas",
+      "Títulos valores: cheques, pagarés y letras de cambio": "Títulos de crédito: cheques, notas promissórias e letras de câmbio",
+      "Defensa en procesos mercantiles ante tribunales": "Defesa em processos empresariais perante tribunais",
+      "Cumplimiento mercantil y gobierno corporativo": "Compliance empresarial e governança corporativa",
+      "Asesoría Notarial": "Serviços Notariais",
+      "Servicio notarial completo en asocio con Notario Público. Respaldo documental con plena validez legal para todas sus operaciones, contratos y actos jurídicos.": "Serviço notarial completo em associação com Notário Público. Respaldo documental com plena validade legal para todas as suas operações, contratos e atos jurídicos.",
+      "Escrituración de bienes inmuebles y traspasos": "Escrituração de bens imóveis e transferências",
+      "Constitución y modificación de sociedades mercantiles": "Constituição e alteração de sociedades empresariais",
+      "Protocolización de contratos y acuerdos privados": "Registro notarial de contratos e acordos privados",
+      "Poderes especiales, generales y amplísimos": "Procurações especiais, gerais e plenas",
+      "Actas de juntas directivas y asambleas de socios": "Atas de conselhos de administração e assembleias de sócios",
+      "Testamentos y disposiciones de última voluntad": "Testamentos e disposições de última vontade",
+      "Trámites Administrativos": "Procedimentos Administrativos",
+      "Gestión integral ante las instituciones del Estado hondureño. Obtenemos permisos, licencias y autorizaciones, e impugnamos resoluciones adversas con eficacia y celeridad.": "Gestão integral perante as instituições do Estado hondurenho. Obtemos alvarás, licenças e autorizações, e impugnamos decisões desfavoráveis com eficácia e celeridade.",
+      "Permisos de operación y licencias empresariales": "Alvarás de funcionamento e licenças empresariais",
+      "Recursos administrativos ante entidades del Estado": "Recursos administrativos perante órgãos do Estado",
+      "Contratación pública, licitaciones y concesiones": "Contratação pública, licitações e concessões",
+      "Procedimientos ante la Procuraduría General de la República": "Procedimentos perante a Procuradoria-Geral da República",
+      "Impugnación de resoluciones administrativas": "Impugnação de decisões administrativas",
+      "Autorizaciones y registros ante entes reguladores": "Autorizações e registros perante órgãos reguladores",
+      "Trámites Aduaneros": "Procedimentos Aduaneiros",
+      "Representación y asesoría en procedimientos ante la Administración Aduanera de Honduras. Resolvemos controversias y agilizamos operaciones de comercio exterior con precisión.": "Representação e assessoria em procedimentos perante a Administração Aduaneira de Honduras. Resolvemos controvérsias e agilizamos operações de comércio exterior com precisão.",
+      "Regímenes aduaneros especiales (RIT, ZOLI, ZIP)": "Regimes aduaneiros especiais (RIT, ZOLI, ZIP)",
+      "Recursos y apelaciones ante la autoridad aduanera": "Recursos e apelações perante a autoridade aduaneira",
+      "Controversias por clasificación arancelaria": "Controvérsias de classificação tarifária",
+      "Gestión de importaciones y exportaciones": "Gestão de importações e exportações",
+      "Zonas Libres de Industria y Comercio (ZOLI)": "Zonas Francas de Indústria e Comércio (ZOLI)",
+      "Zonas Industriales de Procesamiento (ZIP)": "Zonas Industriais de Processamento (ZIP)",
+      "Derecho Marítimo y Portuario": "Direito Marítimo e Portuário",
+      "Asesoría jurídica en materia marítima y portuaria para empresas con operaciones de comercio exterior, navieras y agencias logísticas que requieren representación ante las autoridades competentes.": "Assessoria jurídica em matéria marítima e portuária para empresas com operações de comércio exterior, armadores e agências de logística que necessitam de representação perante as autoridades competentes.",
+      "Contratos de transporte marítimo y fletamento": "Contratos de transporte marítimo e afretamento",
+      "Disputas sobre carga, flete y averías marítimas": "Disputas sobre carga, frete e avarias marítimas",
+      "Responsabilidad del armador y operadores portuarios": "Responsabilidade do armador e dos operadores portuários",
+      "Trámites ante la Empresa Nacional Portuaria (ENP)": "Procedimentos perante a Empresa Nacional Portuária (ENP)",
+      "Gestión ante la Dirección General de la Marina Mercante": "Gestão perante a Direção-Geral da Marinha Mercante",
+      "Contratos de concesión y operación portuaria": "Contratos de concessão e operação portuária",
+      "Nuestra Propuesta de Valor": "Nossa Proposta de Valor",
+      "¿Por qué Bufete Torres Herrera?": "Por que o Escritório Torres Herrera?",
+      "Cada decisión jurídica tiene consecuencias concretas sobre su patrimonio y reputación. Elija un despacho que comprende la diferencia entre actuar bien y actuar a tiempo.": "Cada decisão jurídica tem consequências concretas sobre seu patrimônio e reputação. Escolha um escritório que compreende a diferença entre agir bem e agir a tempo.",
+      "Especialización Real": "Especialização Real",
+      "Dominio técnico profundo en litigios civiles y laborales, trámites aduaneros y administrativos, y asesoría notarial. No generalizamos — nos enfocamos en lo que hacemos bien.": "Domínio técnico profundo em litígios cíveis e trabalhistas, procedimentos aduaneiros e administrativos, e serviços notariais. Não generalizamos — focamos no que fazemos bem.",
+      "Confidencialidad Absoluta": "Confidencialidade Absoluta",
+      "La discreción es parte esencial de nuestro ejercicio profesional. Sus asuntos jurídicos y la información de su empresa están protegidos por el más estricto secreto profesional.": "A discrição é parte essencial do nosso exercício profissional. Seus assuntos jurídicos e as informações da sua empresa estão protegidos pelo mais estrito sigilo profissional.",
+      "Enfoque en Resultados": "Foco em Resultados",
+      "Comprendemos que resolver un conflicto jurídico con rapidez y precisión reduce pérdidas y protege su reputación. Actuamos con urgencia estratégica desde el primer día.": "Compreendemos que resolver um conflito jurídico com rapidez e precisão reduz perdas e protege sua reputação. Agimos com urgência estratégica desde o primeiro dia.",
+      "Cobertura Integral": "Cobertura Integral",
+      "Desde litigios complejos hasta trámites administrativos cotidianos, ofrecemos acompañamiento jurídico continuo que cubre todas las necesidades legales de su empresa.": "De litígios complexos a procedimentos administrativos cotidianos, oferecemos acompanhamento jurídico contínuo que cobre todas as necessidades legais da sua empresa.",
+      "¿A Quién Servimos?": "Quem Atendemos",
+      "Sectores que Atendemos": "Setores que Atendemos",
+      "Atendemos empresas líderes, grupos corporativos y ejecutivos en los sectores más dinámicos de la economía hondureña.": "Atendemos empresas líderes, grupos corporativos e executivos nos setores mais dinâmicos da economia hondurenha.",
+      "Industria Maquiladora": "Indústria Maquiladora",
+      "Cumplimiento laboral, regímenes aduaneros especiales y gestión jurídica integral para empresas en Zonas Francas y ZIP.": "Conformidade trabalhista, regimes aduaneiros especiais e gestão jurídica integral para empresas em Zonas Francas e ZIP.",
+      "Logística y Transporte Marítimo": "Logística e Transporte Marítimo",
+      "Asesoría especializada para navieras, agencias portuarias y operadores en Puerto Cortés y demás puertos nacionales.": "Assessoria especializada para armadores, agências portuárias e operadores em Puerto Cortés e demais portos nacionais.",
+      "Agroindustria y Exportación": "Agroindústria e Exportação",
+      "Trámites de exportación, contratos comerciales y cumplimiento regulatorio para los sectores caficultor, palmicultor y agroexportador.": "Procedimentos de exportação, contratos comerciais e conformidade regulatória para os setores de café, palma e agroexportação.",
+      "Construcción e Inmobiliario": "Construção e Imobiliário",
+      "Escrituración, permisos de construcción, litigios sobre bienes inmuebles y contratos de obra pública y privada.": "Escrituração, alvarás de construção, litígios sobre bens imóveis e contratos de obras públicas e privadas.",
+      "Grupos Corporativos y Holdings": "Grupos Corporativos e Holdings",
+      "Constitución de sociedades, gobierno corporativo, juntas directivas y asesoría jurídica continua para conglomerados empresariales.": "Constituição de sociedades, governança corporativa, conselhos de administração e assessoria jurídica contínua para conglomerados empresariais.",
+      "Sector Financiero e Inversión": "Setor Financeiro e Investimentos",
+      "Contratos financieros, ejecución de garantías, cobro judicial de obligaciones y estructuración de inversiones.": "Contratos financeiros, execução de garantias, cobrança judicial de obrigações e estruturação de investimentos.",
+      "Importadores y Distribuidores": "Importadores e Distribuidores",
+      "Gestión aduanera, clasificación arancelaria, recursos ante la autoridad y optimización de regímenes especiales de importación.": "Gestão aduaneira, classificação tarifária, recursos perante a autoridade e otimização de regimes especiais de importação.",
+      "Energía y Concesiones": "Energia e Concessões",
+      "Contratos de concesión, autorizaciones estatales, licitaciones públicas y cumplimiento regulatorio en el sector energético.": "Contratos de concessão, autorizações estatais, licitações públicas e conformidade regulatória no setor de energia.",
+      "Metodología de Trabajo": "Metodologia de Trabalho",
+      "Nuestro Proceso": "Nosso Processo",
+      "Un enfoque estructurado, transparente y orientado a resultados, desde el primer contacto hasta la resolución definitiva de su asunto.": "Uma abordagem estruturada, transparente e orientada a resultados, do primeiro contato até a resolução definitiva do seu assunto.",
+      "Evaluamos su situación con total confidencialidad y le brindamos una opinión profesional honesta sobre su caso.": "Avaliamos sua situação com total confidencialidade e oferecemos uma opinião profissional honesta sobre o seu caso.",
+      "Diagnóstico Jurídico": "Diagnóstico Jurídico",
+      "Analizamos en profundidad los hechos, documentos y riesgos para construir un cuadro jurídico completo y preciso.": "Analisamos em profundidade os fatos, documentos e riscos para construir um quadro jurídico completo e preciso.",
+      "Estrategia Legal": "Estratégia Jurídica",
+      "Diseñamos la ruta jurídica más efectiva: escenarios claros, plazos definidos y objetivos concretos y medibles.": "Desenhamos o caminho jurídico mais eficaz: cenários claros, prazos definidos e objetivos concretos e mensuráveis.",
+      "Ejecución": "Execução",
+      "Actuamos con rigor y precisión ante tribunales, instituciones públicas o contrapartes, según la estrategia trazada.": "Agimos com rigor e precisão perante tribunais, instituições públicas ou contrapartes, conforme a estratégia traçada.",
+      "Seguimiento": "Acompanhamento",
+      "Le mantenemos informado en cada etapa y ajustamos la estrategia de manera ágil ante cualquier cambio en el proceso.": "Mantemos você informado em cada etapa e ajustamos a estratégia com agilidade diante de qualquer mudança no processo.",
+      "Contáctenos": "Fale Conosco",
+      "Consulte con Nosotros": "Consulte-nos",
+      "Proteja su empresa, sus contratos y sus operaciones con la asesoría jurídica que merecen. La primera consulta es el primer paso hacia la tranquilidad legal.": "Proteja sua empresa, seus contratos e suas operações com a assessoria jurídica que merecem. A primeira consulta é o primeiro passo rumo à tranquilidade jurídica.",
+      "Envíenos su Consulta": "Envie sua Consulta",
+      "Complete el formulario y nos pondremos en contacto con usted a la brevedad. Toda información es tratada con absoluta confidencialidad.": "Preencha o formulário e entraremos em contato em breve. Todas as informações são tratadas com absoluta confidencialidade.",
+      "Nombre completo *": "Nome completo *",
+      "Empresa / Organización": "Empresa / Organização",
+      "Teléfono *": "Telefone *",
+      "Correo electrónico *": "E-mail *",
+      "Área de consulta *": "Área da consulta *",
+      "Seleccione un área...": "Selecione uma área...",
+      "Derecho Laboral Empresarial": "Direito Trabalhista Empresarial",
+      "Otro / Consulta General": "Outro / Consulta Geral",
+      "Descripción del asunto *": "Descrição do assunto *",
+      "Entiendo que la información proporcionada es confidencial y será utilizada únicamente para dar respuesta a mi consulta.": "Entendo que as informações fornecidas são confidenciais e serão utilizadas exclusivamente para responder à minha consulta.",
+      "Enviar Consulta": "Enviar Consulta",
+      "¡Consulta recibida!": "Consulta recebida!",
+      "Hemos recibido su mensaje. Nos comunicaremos con usted a la brevedad posible.": "Recebemos sua mensagem. Entraremos em contato o mais breve possível.",
+      "Canales Directos": "Canais Diretos",
+      "Puede también contactarnos directamente por cualquiera de estos medios.": "Você também pode nos contatar diretamente por qualquer um destes canais.",
+      "Llámenos": "Ligue para Nós",
+      "Correo Electrónico": "E-mail",
+      "Oficinas": "Escritórios",
+      "Condominios Metrópolis, Torre 1, Nivel 18": "Condomínios Metrópolis, Torre 1, 18º Andar",
+      "Bulevar Suyapa, Tegucigalpa, M.D.C.": "Bulevar Suyapa, Tegucigalpa, M.D.C.",
+      "Honduras, C.A.": "Honduras, América Central",
+      "Toda consulta es estrictamente confidencial": "Toda consulta é estritamente confidencial",
+      "Abogados & Consultores Jurídicos · CAH N.º 19210": "Advogados & Consultores Jurídicos · OAB-HN N.º 19210",
+      "Condominios Metrópolis, Torre 1, Nivel 18, Bulevar Suyapa": "Condomínios Metrópolis, Torre 1, 18º Andar, Bulevar Suyapa",
+      "Tegucigalpa, M.D.C., Honduras, C.A.": "Tegucigalpa, M.D.C., Honduras, América Central",
+      "Contacto": "Contato",
+      "© 2026 Bufete Torres Herrera. Todos los derechos reservados.": "© 2026 Escritório Torres Herrera. Todos os direitos reservados."
+    }
+  };
+
+  var nodes = [];      // [{node, es}]
+  var placeholders = []; // [{el, es}]
+
+  function collect() {
+    var walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
+      acceptNode: function (n) {
+        var p = n.parentNode && n.parentNode.nodeName;
+        if (p === "SCRIPT" || p === "STYLE") return NodeFilter.FILTER_REJECT;
+        var t = n.nodeValue.replace(/\s+/g, " ").trim();
+        return t.length > 1 ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT;
+      }
+    });
+    var n;
+    while ((n = walker.nextNode())) {
+      var t = n.nodeValue.replace(/\s+/g, " ").trim();
+      if (I18N.en[t] !== undefined || I18N.pt[t] !== undefined) {
+        nodes.push({ node: n, es: t });
+      }
+    }
+    var els = document.querySelectorAll("[placeholder]");
+    for (var i = 0; i < els.length; i++) {
+      var ph = els[i].getAttribute("placeholder").replace(/\s+/g, " ").trim();
+      if (ph && (I18N.en[ph] !== undefined || I18N.pt[ph] !== undefined)) {
+        placeholders.push({ el: els[i], es: ph });
+      }
+    }
+  }
+
+  function apply(lang) {
+    var dict = lang === "es" ? null : I18N[lang];
+    for (var i = 0; i < nodes.length; i++) {
+      var item = nodes[i];
+      var out = dict && dict[item.es] !== undefined ? dict[item.es] : item.es;
+      // Conservar espacios de borde originales para no pegar palabras
+      var v = item.node.nodeValue;
+      var lead = (v.match(/^\s*/) || [""])[0];
+      var trail = (v.match(/\s*$/) || [""])[0];
+      item.node.nodeValue = lead + out + trail;
+    }
+    for (var j = 0; j < placeholders.length; j++) {
+      var p = placeholders[j];
+      p.el.setAttribute("placeholder", dict && dict[p.es] !== undefined ? dict[p.es] : p.es);
+    }
+    var titleKey = "Bufete Torres Herrera | Abogados Especialistas en Honduras";
+    document.title = dict && dict[titleKey] ? dict[titleKey] : titleKey;
+    document.documentElement.setAttribute("lang", lang);
+    try { localStorage.setItem("bth-lang", lang); } catch (e) {}
+    var btns = document.querySelectorAll(".lang-btn");
+    for (var k = 0; k < btns.length; k++) {
+      btns[k].classList.toggle("active", btns[k].getAttribute("data-lang") === lang);
+    }
+  }
+
+  window.bthSetLang = apply;
+
+  document.addEventListener("DOMContentLoaded", function () {
+    collect();
+    var saved = "es";
+    try { saved = localStorage.getItem("bth-lang") || "es"; } catch (e) {}
+    if (saved !== "es") apply(saved); else apply("es");
+  });
+})();
+
+</script>
 </body>
 </html>
