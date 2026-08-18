@@ -99,8 +99,10 @@
     .nav-wrap {
       max-width: 1260px; margin: 0 auto; padding: 0 2rem;
       height: 74px;
-      display: flex; align-items: center; justify-content: space-between;
+      display: flex; align-items: center; justify-content: space-between; gap: 1rem;
     }
+    /* Grupo derecho: menú + botones de idioma alineados y centrados verticalmente */
+    .nav-right { display: flex; align-items: center; gap: .6rem; }
 
     .nav-logo { display: flex; flex-direction: column; }
     .nav-logo-name {
@@ -699,7 +701,7 @@
     }
 
     /* ── Language switcher ─────────────────────────────── */
-    .lang-switch { display: flex; align-items: center; gap: 2px; margin-left: 1.1rem;
+    .lang-switch { display: flex; align-items: center; gap: 2px;
       border: 1px solid rgba(255,255,255,.25); border-radius: 999px; padding: 3px; }
     .lang-btn { background: none; border: none; cursor: pointer; font-family: 'Inter', sans-serif;
       font-size: .72rem; font-weight: 600; letter-spacing: .05em; color: rgba(255,255,255,.65);
@@ -714,7 +716,88 @@
     .mob-lang .lang-btn { font-size: .85rem; padding: .45rem .9rem; border: 1px solid rgba(255,255,255,.3); }
     @media (max-width: 900px) { .nav-wrap > .lang-switch { display: none; } }
   </style>
+
+  <!-- ============ SEO: Open Graph & Twitter Cards ============ -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Bufete Torres Herrera" />
+  <meta property="og:title" content="Bufete Torres Herrera | Abogados Especialistas en Honduras" />
+  <meta property="og:description" content="Despacho jurídico en Tegucigalpa especializado en litigios civiles, laborales y mercantiles, derecho aduanero, marítimo y portuario, trámites administrativos y servicios notariales. Atención a empresas y personas en toda Honduras." />
+  <meta property="og:url" content="https://bufetetorresherrera.com" />
+  <meta property="og:locale" content="es_HN" />
+  <meta property="og:locale:alternate" content="en_US" />
+  <meta property="og:locale:alternate" content="pt_BR" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Bufete Torres Herrera | Abogados Especialistas en Honduras" />
+  <meta name="twitter:description" content="Litigios civiles, laborales y mercantiles, derecho aduanero y marítimo, y servicios notariales en Tegucigalpa, Honduras." />
+  <link rel="canonical" href="https://bufetetorresherrera.com" />
+
+  <!-- ============ Schema Markup: LegalService (JSON-LD) ============ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LegalService",
+    "@id": "https://bufetetorresherrera.com/#bufete",
+    "name": "Bufete Torres Herrera",
+    "alternateName": "Bufete Torres Herrera - Abogados & Consultores",
+    "description": "Despacho jurídico en Tegucigalpa, Honduras, especializado en litigios civiles, laborales y mercantiles, derecho administrativo, aduanero, marítimo y portuario, y servicios notariales, con atención a empresas, corporaciones y personas naturales en todo el territorio nacional.",
+    "url": "https://bufetetorresherrera.com",
+    "telephone": "+504-9889-2708",
+    "email": "dtorres@bufetetorresherrera.com",
+    "priceRange": "$$",
+    "image": "https://bufetetorresherrera.com/abogado.jpg",
+    "logo": "https://bufetetorresherrera.com/abogado.jpg",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Condominios Metrópolis, Torre 1, Nivel 18, Bulevar Suyapa",
+      "addressLocality": "Tegucigalpa",
+      "addressRegion": "Francisco Morazán",
+      "addressCountry": "HN"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 14.0839,
+      "longitude": -87.1875
+    },
+    "areaServed": {
+      "@type": "Country",
+      "name": "Honduras"
+    },
+    "availableLanguage": ["es", "en", "pt"],
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        "opens": "08:00",
+        "closes": "17:00"
+      }
+    ],
+    "founder": {
+      "@type": "Person",
+      "name": "Daniel Torres Salgado",
+      "jobTitle": "Abogado",
+      "memberOf": {
+        "@type": "Organization",
+        "name": "Colegio de Abogados de Honduras"
+      }
+    },
+    "knowsLanguage": ["Español", "English", "Português"],
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Áreas de Práctica",
+      "itemListElement": [
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Litigios Civiles" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Litigios Laborales" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Derecho Mercantil" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Asesoría Notarial" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Trámites Administrativos" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Trámites Aduaneros" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Derecho Marítimo y Portuario" } }
+      ]
+    }
+  }
+  </script>
 </head>
+
 <body>
 
 <!-- ── Navigation ──────────────────────────────────────────────── -->
@@ -724,18 +807,21 @@
       <span class="nav-logo-name">Bufete Torres Herrera</span>
       <span class="nav-logo-tag">Abogados &amp; Consultores Jurídicos</span>
     </a>
-    <ul class="nav-links">
+    <div class="nav-right">
+      <ul class="nav-links">
       <li><a href="#nosotros">Nosotros</a></li>
       <li><a href="#areas">Áreas de Práctica</a></li>
       <li><a href="#clientes">Sectores</a></li>
       <li><a href="#proceso">Proceso</a></li>
       <li><a href="#contacto" class="nav-cta">Consulta Inicial</a></li>
     </ul>
-    <div class="lang-switch" aria-label="Idioma / Language">
+      <div class="lang-switch" aria-label="Idioma / Language">
       <button class="lang-btn active" data-lang="es" onclick="bthSetLang('es')" title="Español">ES</button>
       <button class="lang-btn" data-lang="en" onclick="bthSetLang('en')" title="English">EN</button>
       <button class="lang-btn" data-lang="pt" onclick="bthSetLang('pt')" title="Português">PT</button>
     </div>
+    </div>
+    
     <button class="nav-burger" id="burger" aria-label="Menú">
       <span class="burger-bar"></span>
       <span class="burger-bar"></span>
@@ -1377,7 +1463,7 @@
       "Trámites Administrativos y Aduaneros": "Administrative & Customs Proceedings",
       "Asociado a Notario Público": "Associated with a Notary Public",
       "Derecho Marítimo y Gestión Portuaria": "Maritime Law & Port Management",
-      "CAH N.º 19210 · UNAH": "Honduran Bar Assoc. No. 19210 · UNAH",
+      "CAH N.º 19210 · UNAH": "Attorney Registration No. 19210 · UNAH",
       "Litigante Activo": "Active Trial Attorney",
       "Tribunales Civiles y Laborales · Honduras": "Civil & Labor Courts · Honduras",
       "Sobre el Bufete": "About the Firm",
@@ -1392,7 +1478,7 @@
       "Formación en Derecho Marítimo y Gestión Portuaria": "Trained in Maritime Law & Port Management",
       "— Universidad Nacional Autónoma de Honduras (UNAH)": "— National Autonomous University of Honduras (UNAH)",
       "Miembro activo": "Active member",
-      "del Colegio de Abogados de Honduras — Colegiación N.º 19210": "of the Honduran Bar Association — Registration No. 19210",
+      "del Colegio de Abogados de Honduras — Colegiación N.º 19210": "of the Bar Association of Honduras — Attorney Registration No. 19210",
       "Respaldo Notarial": "Notarial Backing",
       "Abogado Daniel Torres Herrera": "Attorney Daniel Torres Herrera",
       "Notario Público & Abogado · Honduras": "Notary Public & Attorney · Honduras",
@@ -1526,7 +1612,7 @@
       "Bulevar Suyapa, Tegucigalpa, M.D.C.": "Suyapa Boulevard, Tegucigalpa, M.D.C.",
       "Honduras, C.A.": "Honduras, Central America",
       "Toda consulta es estrictamente confidencial": "All inquiries are strictly confidential",
-      "Abogados & Consultores Jurídicos · CAH N.º 19210": "Attorneys & Legal Consultants · Bar Reg. No. 19210",
+      "Abogados & Consultores Jurídicos · CAH N.º 19210": "Attorneys & Legal Consultants · Attorney Reg. No. 19210",
       "Condominios Metrópolis, Torre 1, Nivel 18, Bulevar Suyapa": "Metrópolis Condominiums, Tower 1, 18th Floor, Suyapa Boulevard",
       "Tegucigalpa, M.D.C., Honduras, C.A.": "Tegucigalpa, M.D.C., Honduras, Central America",
       "Contacto": "Contact",
@@ -1551,7 +1637,7 @@
       "Trámites Administrativos y Aduaneros": "Procedimentos Administrativos e Aduaneiros",
       "Asociado a Notario Público": "Associado a Notário Público",
       "Derecho Marítimo y Gestión Portuaria": "Direito Marítimo e Gestão Portuária",
-      "CAH N.º 19210 · UNAH": "Ordem dos Advogados de Honduras N.º 19210 · UNAH",
+      "CAH N.º 19210 · UNAH": "Registro de Advogado N.º 19210 · UNAH",
       "Litigante Activo": "Litigante Ativo",
       "Tribunales Civiles y Laborales · Honduras": "Tribunais Cíveis e Trabalhistas · Honduras",
       "Sobre el Bufete": "Sobre o Escritório",
@@ -1566,7 +1652,7 @@
       "Formación en Derecho Marítimo y Gestión Portuaria": "Formação em Direito Marítimo e Gestão Portuária",
       "— Universidad Nacional Autónoma de Honduras (UNAH)": "— Universidade Nacional Autônoma de Honduras (UNAH)",
       "Miembro activo": "Membro ativo",
-      "del Colegio de Abogados de Honduras — Colegiación N.º 19210": "da Ordem dos Advogados de Honduras — Inscrição N.º 19210",
+      "del Colegio de Abogados de Honduras — Colegiación N.º 19210": "do Colégio de Advogados de Honduras — Registro de Advogado N.º 19210",
       "Respaldo Notarial": "Respaldo Notarial",
       "Abogado Daniel Torres Herrera": "Advogado Daniel Torres Herrera",
       "Notario Público & Abogado · Honduras": "Notário Público & Advogado · Honduras",
@@ -1700,7 +1786,7 @@
       "Bulevar Suyapa, Tegucigalpa, M.D.C.": "Bulevar Suyapa, Tegucigalpa, M.D.C.",
       "Honduras, C.A.": "Honduras, América Central",
       "Toda consulta es estrictamente confidencial": "Toda consulta é estritamente confidencial",
-      "Abogados & Consultores Jurídicos · CAH N.º 19210": "Advogados & Consultores Jurídicos · OAB-HN N.º 19210",
+      "Abogados & Consultores Jurídicos · CAH N.º 19210": "Advogados & Consultores Jurídicos · Registro de Advogado N.º 19210",
       "Condominios Metrópolis, Torre 1, Nivel 18, Bulevar Suyapa": "Condomínios Metrópolis, Torre 1, 18º Andar, Bulevar Suyapa",
       "Tegucigalpa, M.D.C., Honduras, C.A.": "Tegucigalpa, M.D.C., Honduras, América Central",
       "Contacto": "Contato",
